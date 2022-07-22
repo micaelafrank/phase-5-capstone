@@ -4,7 +4,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import S3FileUpload from 'react-s3';
 
 
-function AddItemForm() {
+function AddItemForm({ renderNewItem, items, setItems, user }) {
     const [itemname, setItemName] = useState("")
     const [price, setPrice] = useState("")
     const [description, setDescription] = useState("")
@@ -12,34 +12,39 @@ function AddItemForm() {
     const [material, setMaterial] = useState("")
     const [size, setSize] = useState("XXS")
     const [condition, setCondition] = useState("New With Tags")
+    const [errors, setErrors] = useState([]);
 
-
+    const formData = {
+        itemname: itemname,
+        price: price, 
+        description: description, 
+        color: color, 
+        material: material, 
+        size: size, 
+        condition: condition,
+        user_id: user.id
+    }
+    
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(itemname, price, description, color, material, size, condition);
+        setErrors([]);
+        fetch("/items", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData)
+        })
+            .then((r) => {
+                if (r.ok) {
+                    r.json().then(data => renderNewItem(data));
+                    // navigate(`/item/${id}`);
+                }
+                else {
+                    r.json().then((err) => setErrors(err.errors));
+                }
+            });
     }
-
-    //     setErrors([]);
-    //     setIsLoading(true);
-
-    //     fetch(`/items`, {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify(formData)
-    //     })
-    //         .then((r) => {
-    //             // setIsLoading(false);
-    //             if (r.ok) {
-    //                 r.json().then(data => renderNewItem(data));
-    //                 navigate(`/item/${id}`);
-    //             }
-    //             else {
-    //                 r.json().then((err) => setErrors(err.errors));
-    //             }
-    //         });
-    // }
 
 
     // const uploadPhoto=(e)=>{
@@ -55,7 +60,8 @@ function AddItemForm() {
     return(
         <>
             <h1>SELL NEW ITEM:</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}> 
+            {/* onSubmit={handleSubmit}> */}
                 <Form.Group className="mb-3">
                     <Form.Label htmlFor="name">Item Name:</Form.Label>
                     <Form.Control type="text" 
@@ -125,6 +131,7 @@ function AddItemForm() {
                         <option value="31">31</option>
                         <option value="32">32</option>
                         <option value="33">33</option>
+                        <option value="33">N/A</option>
                     </select>
                 </Form.Group>
 
