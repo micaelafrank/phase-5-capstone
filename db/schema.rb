@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_21_153635) do
     t.string "username"
     t.string "fullname"
     t.string "email"
-    t.integer "role"
+    t.boolean "is_admin", default: false
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

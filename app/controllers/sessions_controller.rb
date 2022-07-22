@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
     #POST for '/login'
     #finds the user data from the username and if the password matches, it 
     #saves the user information in the sessions and stays logged in.
+    skip_before_action :authorize, only: :create
 
     def create 
         user = User.find_by(username: params[:username])

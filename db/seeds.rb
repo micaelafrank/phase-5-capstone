@@ -6,8 +6,7 @@ Item.destroy_all
         username: Faker::Esport.player,
         fullname: Faker::Name.unique.name,
         email: Faker::Internet.unique.email,
-        password_digest: Faker::Internet.password,
-        role: false)
+        password_digest: Faker::Internet.password)
     end
 
 users = User.all 

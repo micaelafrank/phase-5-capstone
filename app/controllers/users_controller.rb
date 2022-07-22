@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     def create
         user = User.create!(newuser_params)
         if user.valid? 
+            session[:user_id] = user.id
             render json: user, status: 201
         else
             render json: { error: "Invalid user" }, status: :unprocessable_entity
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
     private 
 
     def newuser_params
-        params.permit(:fullname, :email, :password, :password_confirmation, :username)
+        params.permit(:fullname, :email, :password, :username)
     end
 end
 
