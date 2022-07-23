@@ -1,6 +1,0 @@
-const config = {
-    bucketName: 'frank-flatiron-mktplace-item-photos',
-    region: 'US East (N. Virginia) us-east-1',
-    accessKeyId: 'AKIAW2OVJ4NPJLEJ7MP2',
-    secretAccessKey: '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'
-}
