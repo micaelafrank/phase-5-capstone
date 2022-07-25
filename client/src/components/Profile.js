@@ -18,6 +18,29 @@ function Profile({ user }) {
                 </div>
             </div>
             <h3>Welcome!</h3>
+            <div>
+                <h2>Active Offers:</h2>
+                <ul>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Items For Sale Now:</h2>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Sold Items:</h2>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
         </div>
     )
 }

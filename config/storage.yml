@@ -8,10 +8,10 @@ local:
 
 
 amazon:
-  bucket: 'frank-flatiron-mktplace-item-photos'-<%= Rails.env %>
+  bucket: frank-flatiron-mktplace-item-photos
   region: 'us-east-1'
-  access_key_id: ENV["ACCESSKEYID"],
-  secret_access_key: ENV["SECRETACCESSKEY"],
+  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
   # bucket: 'frank-flatiron-mktplace-item-photos'-<%= Rails.env %>
   service: S3
 
