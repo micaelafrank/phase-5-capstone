@@ -19,8 +19,8 @@ function AddItemForm({ user, items, setItems }) {
     const config = {
         bucketName: 'frank-flatiron-mktplace-item-photos',
         region: 'us-east-1',
-        accessKeyId: 'AKIAW2OVJ4NPDMOLLI7I',
-        secretAccessKey: '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',
+        access_key_id: ENV["ACCESSKEYID"],
+        secret_access_key: ENV["SECRETACCESSKEY"],    
     }
 
     const formData = {
