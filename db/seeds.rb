@@ -19,9 +19,10 @@ puts "done seeding users!"
         description: Faker::Commerce.department,
         color: Faker::Commerce.color,
         user_id: 1,
-        size: Faker::Commerce.color,
+        size: Faker::Commerce.size,
         condition: Faker::Commerce.color,
-        material: Faker::Commerce.material)
+        material: Faker::Commerce.material
+    )
     end
 
 items = Item.all 

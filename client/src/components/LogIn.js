@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function LogIn({ setUser }){
+function LogIn({ setUser, user }){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
@@ -31,7 +31,11 @@ function LogIn({ setUser }){
 
     return(
         <>
-            <h1>Log me in, coach!</h1>
+            <header style={{ float: "right", height: "10em" }}>
+                <button style={{ padding: "3px 10px", marginRight: "10px" }} onClick={() => navigate("/home")}>Home</button>
+                <button style={{ padding: "3px 10px" }} onClick={() => navigate("/signup")}>Sign Up</button>
+            </header>
+            <h1>Log In</h1>
             <form onSubmit={handleLogin}>
                 <input type="text"
                 value={username}
@@ -43,6 +47,7 @@ function LogIn({ setUser }){
                 />
                 <button type="submit">Login</button>
             </form>
+            <button onClick={() => navigate("/signup")}>Not a member yet? Sign up!</button>
         </>
     );
 }

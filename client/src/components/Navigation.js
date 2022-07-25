@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 function Navigation({ user, setUser }) {
     const navigate = useNavigate();
@@ -28,20 +28,23 @@ function Navigation({ user, setUser }) {
     return (
         <header className="navbarContainer">
             <div className="navbar-nav navbar-css">
-                <Link className="nav-item" to="/profile">Home</Link>
+                <Link className="nav-item" exact="true" to="/">Home</Link>
                 {/* {user ? (
                 <button onClick={handleLogout}>Logout</button>
-            ) : (  */}
+                ) : (  */}
                 <Link className="nav-item" to="/profile">Profile</Link>
                 <Link className="nav-item" to="/buy">Buy</Link>
                 <Link className="nav-item" to="/sell">Sell</Link>
-                <div class="centered">
+                <div className="centered">
                     <button className="nav-button" onClick={handleLogout}>Logout</button>
                 {/* )} */}
                 </div>
             </div>
-            <div id="userNav">
-                Signed in as: <Link to="/profile">{user.username}</Link>
+            <div id="userNav" style={{ paddingRight: "20px" }}>
+                <p style={{paddingRight:"20px"}}>Signed in as: <span style={{ fontWeight: "bold" }}>{user.username}</span></p>
+                <span id="userNavCartContainer">
+                    <ShoppingCartOutlinedIcon />
+                </span>
             </div>
         </header>
     )};

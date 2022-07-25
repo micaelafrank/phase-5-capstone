@@ -32,7 +32,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :item_invalid
     private 
 
     def item_params
-        params.permit(:itemname, :price, :description, :color, :size, :condition, :material, :user_id)
+        params.permit(:itemname, :price, :description, :color, :size, :condition, :material, :user_id, images: [])
     end
 
     def find_item

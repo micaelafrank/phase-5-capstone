@@ -32,6 +32,10 @@ function SignUp({ user, setUser }) {
 
     return(
         <>
+            <header style={{ float: "right", height: "10em" }}>
+                <button style={{ padding: "3px 10px", marginRight: "10px" }} onClick={() => navigate("/home")}>Home</button>
+                <button style={{ padding: "3px 10px" }} onClick={() => navigate("/login")}>Login</button>
+            </header>
             <h1>I am signing up</h1>
             <form onSubmit={handleSignUp}>
                 <label>First and last name:</label>

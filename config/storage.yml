@@ -8,12 +8,12 @@ local:
 
 
 amazon:
-    bucket: 'frank-flatiron-mktplace-item-photos',
-    region: 'us-east-1',
-    access_key_id: 'AKIAW2OVJ4NPJLEJ7MP2',
-    secret_access_key: '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',
-    bucket: 'frank-flatiron-mktplace-item-photos'-<%= Rails.env %>,
-    service: S3
+  bucket: 'frank-flatiron-mktplace-item-photos'-<%= Rails.env %>
+  region: 'us-east-1'
+  access_key_id: ENV["ACCESSKEYID"],
+  secret_access_key: ENV["SECRETACCESSKEY"],
+  # bucket: 'frank-flatiron-mktplace-item-photos'-<%= Rails.env %>
+  service: S3
 
 
 local:

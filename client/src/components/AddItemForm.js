@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import S3FileUpload from 'react-s3';
 
 
-function AddItemForm({ renderNewItem, items, setItems, user }) {
+function AddItemForm({ user, items, setItems }) {
+    // renderNewItem,
     const [itemname, setItemName] = useState("")
     const [price, setPrice] = useState("")
     const [description, setDescription] = useState("")
@@ -13,6 +14,14 @@ function AddItemForm({ renderNewItem, items, setItems, user }) {
     const [size, setSize] = useState("XXS")
     const [condition, setCondition] = useState("New With Tags")
     const [errors, setErrors] = useState([]);
+    // const [images, setImages] = useState([]);
+
+    const config = {
+        bucketName: 'frank-flatiron-mktplace-item-photos',
+        region: 'us-east-1',
+        accessKeyId: 'AKIAW2OVJ4NPDMOLLI7I',
+        secretAccessKey: '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',
+    }
 
     const formData = {
         itemname: itemname,
@@ -23,7 +32,13 @@ function AddItemForm({ renderNewItem, items, setItems, user }) {
         size: size, 
         condition: condition,
         user_id: user.id
+        // images: config
     }
+
+    // uploadFile(file, config)
+    //     .then(data => console.log(data))
+    //     .catch(err => console.error(err))
+
     
     function handleSubmit(e) {
         e.preventDefault();
@@ -37,8 +52,8 @@ function AddItemForm({ renderNewItem, items, setItems, user }) {
         })
             .then((r) => {
                 if (r.ok) {
-                    r.json().then(data => renderNewItem(data));
-                    // navigate(`/item/${id}`);
+                    r.json().then(data => setItems(data));
+                    // navigate(`/items/${item.id}`);
                 }
                 else {
                     r.json().then((err) => setErrors(err.errors));
@@ -61,7 +76,6 @@ function AddItemForm({ renderNewItem, items, setItems, user }) {
         <>
             <h1>SELL NEW ITEM:</h1>
             <form onSubmit={handleSubmit}> 
-            {/* onSubmit={handleSubmit}> */}
                 <Form.Group className="mb-3">
                     <Form.Label htmlFor="name">Item Name:</Form.Label>
                     <Form.Control type="text" 
@@ -131,7 +145,16 @@ function AddItemForm({ renderNewItem, items, setItems, user }) {
                         <option value="31">31</option>
                         <option value="32">32</option>
                         <option value="33">33</option>
-                        <option value="33">N/A</option>
+                        <option value="0">0</option>
+                        <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="6">6</option>
+                        <option value="8">8</option>
+                        <option value="10">10</option>
+                        <option value="12">12</option>
+                        <option value="14">14</option>
+                        <option value="16">16</option>
+                        <option value="NA">N/A</option>
                     </select>
                 </Form.Group>
 
@@ -150,20 +173,34 @@ function AddItemForm({ renderNewItem, items, setItems, user }) {
                         <option value="wearTear">Some Wear and Tear</option>
                     </select>
                 </Form.Group>
-{/* 
-                <Form.Group controlId="formFileSm" className="mb-3">
+
+                {/* <Form.Group controlId="formFileSm" className="mb-3">
                     <Form.Label>Upload photos:</Form.Label>
-                    <Form.Control type="file" size="sm" 
-                    value={image}
-                    onChange={uploadPhoto}/>
-                    <Form.Control type="file" size="sm"
-                        value={image}
-                        onChange={uploadPhoto} />
-                    <Form.Control type="file" size="sm"
-                        value={image}
-                        onChange={uploadPhoto} />
+                    <input type="file" 
+                    id="file-input" 
+                    accept="image/*"
+                    value={image1}
+                    onChange={uploadPhoto} />
+
+                    <input type="file"
+                    id="file-input"
+                    accept="image/*"
+                    value={image2}
+                    onChange={uploadPhoto} />
+
+                    <input type="file"
+                    id="file-input"
+                    accept="image/*"
+                    value={image3}
+                    onChange={uploadPhoto} />
+
+                    <input type="file"
+                    id="file-input"
+                    accept="image/*"
+                    value={image4}
+                    onChange={uploadPhoto} />
                 </Form.Group>  */}
-                <button type="submit">Submit</button>
+                <button style={{padding:"5px 12px"}} type="submit">Submit</button>
             </form>
         </>
     )
