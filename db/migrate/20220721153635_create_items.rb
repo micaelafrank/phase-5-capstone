@@ -8,9 +8,8 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.integer :user_id 
       t.string :size 
       t.string :condition 
-      t.string :material 
-      t.attachments :images
-      
+      t.string :material
+
       t.timestamps
     end
   end

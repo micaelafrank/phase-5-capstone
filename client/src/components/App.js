@@ -16,10 +16,14 @@ function App() {
   const [user, setUser] = useState({});
   const [items, setItems] = useState([])
 
+  function addNewItem(newItem) {
+    setItems(...items, newItem)
+  }
+
   useEffect(() => {
     fetch("/items")
       .then((r) => r.json())
-      .then(data => { setItems(data) })
+      .then(data => setItems(data))
   }, [])
 
   useEffect(() => {
@@ -42,12 +46,12 @@ function App() {
             <Route path="/signup" element={<SignUp user={user} setUser={setUser} />} />
             <Route exact={true} path="/" element={<Home />} />
             {/* <Route path="/home" element={<Home />} /> */}
-            //SHOW NAV BAR IN HOME WHEN YOU'RE SIGNED IN. OTHERWISE NOT
+            {/* //SHOW NAV BAR IN HOME WHEN YOU'RE SIGNED IN. OTHERWISE NOT */}
           </Route>
             <Route element={<WithNav user={user} setUser={setUser} />}>
             <Route path="/profile" element={<Profile user={user} />} />
-            <Route path="/sell" element={<AddItemForm user={user} setItems={setItems} />} />
-            <Route path="/buy" element={<ItemsList items={items} setItems={setItems} />} />
+            <Route path="/sell" element={<AddItemForm addNewItem={addNewItem} user={user} />} />
+            <Route path="/buy" element={<ItemsList />} />
           </Route>
         </Routes>
         <Footer />

@@ -12,6 +12,10 @@ body {
   font-size: inherit;
 }
 
+.activated-heart :first-child{
+    color: red;
+}
+
 .footer{
   position:relative;
   bottom: 0;
@@ -93,8 +97,8 @@ padding: 20px;
 }
 
 .one-item-card{
-  width: 19em;
-  height: 35em;
+  width: 18em;
+  height: 40em;
   line-height: 1;
   border: 1px solid black;
   padding-bottom: 10px;
@@ -113,13 +117,16 @@ padding: 20px;
 }
 
 .item-card-image{
-  max-width:14em; 
-  max-height: 16.2em;
+  max-width:18em; 
+  height: auto;
+  max-height: 22em;
   align-items: center;
   text-align: center;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
 }
 
 .item-price{
@@ -148,8 +155,7 @@ padding: 20px;
 }
 
 .item-card-bottom{
-  margin-top: 20px;
-  border-top: 1px solid black;
+  /* margin-top: 10px; */
   padding-top: 10px;
   line-height: .3;
 }

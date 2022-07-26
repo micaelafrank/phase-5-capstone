@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ItemCard from './ItemCard';
 import SearchBar from './SearchBar';
 
-function ItemsList({ items }){
-    // const [items, setItems] = useState([])
+function ItemsList(){
+    const [items, setItems] = useState([])
 
-    // useEffect(() => {
-    //     fetch("/items")
-    //         .then((r) => r.json())
-    //         .then(data => { setItems(data) })
-    // }, [])
+    useEffect(() => {
+        fetch("/items")
+            .then((r) => r.json())
+            .then(data => { setItems(data) })
+    }, [])
+
+    // function renderNewItem(newItem){
+    //     setItems(...items, newItem);
+    // }
 
     const itemsList = items.map((item) => {
         return (
@@ -26,6 +30,9 @@ function ItemsList({ items }){
                 size={item.size}
                 sold_by={item.sold_by}
                 item={item}
+                likes={item.likes}
+                images_url={item.images_url}
+                // images={item.target.files[0]}
             />
         )
     })

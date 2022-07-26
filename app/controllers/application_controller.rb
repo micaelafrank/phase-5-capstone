@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
     include ActionController::Cookies 
 # rescue_from ActiveRecord::RecordInvalid, with: :render_invalid
   before_action :authorize
-  
+
   private
 
   # def render_invalid(e)

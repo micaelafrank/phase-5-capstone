@@ -6,9 +6,9 @@ Item.destroy_all
         username: Faker::Esport.player,
         fullname: Faker::Name.unique.name,
         email: Faker::Internet.unique.email,
-        password_digest: Faker::Internet.password)
+        password: Faker::Internet.password)
     end
-
+User.create!(username: "m", fullname: Faker::Name.unique.name,email: Faker::Internet.unique.email, password: "1")
 users = User.all 
 puts "done seeding users!"
 
@@ -19,7 +19,7 @@ puts "done seeding users!"
         description: Faker::Commerce.department,
         color: Faker::Commerce.color,
         user_id: 1,
-        size: Faker::Commerce.size,
+        size: "small",
         condition: Faker::Commerce.color,
         material: Faker::Commerce.material
     )

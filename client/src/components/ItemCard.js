@@ -5,7 +5,20 @@ import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 
-function ItemCard({sold_by, itemname, item, id, color, price, description, material, condition, size}){
+function ItemCard({ sold_by, itemname, item, id, color, price, description, images_url, material, condition, size}){
+
+    // function updateLikes() {
+    //     const likesUpdate = {
+    //         likes: toy.likes + 1,
+    //     };
+    //     fetch(`http://localhost:3001/toys/${id}`, {
+    //         method: "PATCH",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify(likesUpdate),
+    //     })
+    //         .then(res => res.json())
+    //         .then(handleToyLikes)
+    // }
 
     return(
         <div className="one-item-card">
@@ -32,7 +45,7 @@ function ItemCard({sold_by, itemname, item, id, color, price, description, mater
                 <div className="item-middle-header">
                     <h3>{itemname}</h3>
                     <button className="details-btn">VIEW DETAILS</button>
-                    <img className="item-card-image" alt="Placeholder" src="https://i.ibb.co/zsXXjLW/hanger-blank-white-t-shirt-wooden-background-hanger-blank-white-t-shirt-wooden-background-space-text.jpg" />
+                    <img className="item-card-image" alt="Placeholder" src={images_url} style={{height:"22em", width:"18em"}} />
                 </div>
             </div>
 
@@ -49,11 +62,11 @@ function ItemCard({sold_by, itemname, item, id, color, price, description, mater
                 </div>
                 <div className="item-price item-card-user-button-name">
                     <AccountCircleOutlinedIcon />
-                    <p style={{ paddingLeft: "4px" }}>Posted by <a href="/profile/${user_id}">{item.sold_by}</a></p>
+                    <p style={{ paddingLeft: "4px" }}>Posted by {item.sold_by}</p>
                 </div>
-                <div className="item-price">
+                <div id="heartButton" className="item-price">
                     <FavoriteBorderOutlinedIcon />
-                    <p style={{ paddingLeft: "5px" }}>Num of likes</p>
+                    <p style={{ paddingLeft: "5px", color:"black"}}>Num of likes</p>
                 </div>
             </div>
         </div>

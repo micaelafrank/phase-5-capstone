@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import S3FileUpload from 'react-s3';
+import { useNavigate } from 'react-router-dom';
 
-
-function AddItemForm({ user, items, setItems }) {
-    // renderNewItem,
+function AddItemForm({ user, addNewItem }) {
     const [itemname, setItemName] = useState("")
     const [price, setPrice] = useState("")
     const [description, setDescription] = useState("")
@@ -14,24 +12,24 @@ function AddItemForm({ user, items, setItems }) {
     const [size, setSize] = useState("XXS")
     const [condition, setCondition] = useState("New With Tags")
     const [errors, setErrors] = useState([]);
-    // const [images, setImages] = useState([]);
+    const [images, setImages] = useState([]);
+    const navigate = useNavigate();
 
+    function handleImages(e) {
+        console.log(e.target.files[0]);
+        setImages(e.target.files[0])
+    };
 
-    const formData = {
-        itemname: itemname,
-        price: price, 
-        description: description, 
-        color: color, 
-        material: material, 
-        size: size, 
-        condition: condition,
-        user_id: user.id
-        // images: config
-    }
-
-    // uploadFile(file, config)
-    //     .then(data => console.log(data))
-    //     .catch(err => console.error(err))
+   const formData = new FormData();
+    formData.append('itemname', itemname);
+    formData.append('price', price);
+    formData.append('description', description);
+    formData.append('color', color);
+    formData.append('material', material);
+    formData.append('size', size);
+    formData.append('condition', condition);
+    formData.append('user_id', user.id);
+    formData.append('images', images);
 
     
     function handleSubmit(e) {
@@ -39,32 +37,18 @@ function AddItemForm({ user, items, setItems }) {
         setErrors([]);
         fetch("/items", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData)
+            body: formData,
         })
             .then((r) => {
+                // setIsLoading(false);
                 if (r.ok) {
-                    r.json().then(data => setItems(data));
-                    // navigate(`/items/${item.id}`);
-                }
+                    r.json().then(data => addNewItem(data));
+                    navigate("/buy")}
                 else {
                     r.json().then((err) => setErrors(err.errors));
                 }
             });
     }
-
-
-    // const uploadPhoto=(e)=>{
-    //     S3FileUpload.uploadFile(e.target.files[0], config)
-    //     .then((data)=> {
-    //         console.log(data.location)
-    //     })
-    //     .catch( (err=>{
-    //         alert(err)
-    //     }))
-    // }
 
     return(
         <>
@@ -168,32 +152,15 @@ function AddItemForm({ user, items, setItems }) {
                     </select>
                 </Form.Group>
 
-                {/* <Form.Group controlId="formFileSm" className="mb-3">
-                    <Form.Label>Upload photos:</Form.Label>
-                    <input type="file" 
-                    id="file-input" 
-                    accept="image/*"
-                    value={image1}
-                    onChange={uploadPhoto} />
-
+                <Form.Group className="mb-3">
+                    <label>Upload images:</label>
                     <input type="file"
-                    id="file-input"
+                    id="file" 
+                    name="file"
                     accept="image/*"
-                    value={image2}
-                    onChange={uploadPhoto} />
-
-                    <input type="file"
-                    id="file-input"
-                    accept="image/*"
-                    value={image3}
-                    onChange={uploadPhoto} />
-
-                    <input type="file"
-                    id="file-input"
-                    accept="image/*"
-                    value={image4}
-                    onChange={uploadPhoto} />
-                </Form.Group>  */}
+                    onChange={handleImages} 
+                    />
+                </Form.Group>  
                 <button style={{padding:"5px 12px"}} type="submit">Submit</button>
             </form>
         </>
