@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     #sends the data to the front end
 
     def show 
-        render json: @current_user, serializer: UsersSerializer
+        render json: @current_user
     end
 
     private 

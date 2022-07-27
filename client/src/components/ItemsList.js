@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ItemCard from './ItemCard';
 import SearchBar from './SearchBar';
 
-function ItemsList(){
+function ItemsList({ user, cartItem, change, setChange }){
     const [items, setItems] = useState([])
 
     useEffect(() => {
@@ -18,6 +18,7 @@ function ItemsList(){
     const itemsList = items.map((item) => {
         return (
             <ItemCard
+                item={item}
                 key={item.id}
                 user_id={item.user_id}
                 id={item.id}
@@ -29,9 +30,12 @@ function ItemsList(){
                 condition={item.condition}
                 size={item.size}
                 sold_by={item.sold_by}
-                item={item}
                 likes={item.likes}
+                isForSale={item.isForSale}
                 images_url={item.images_url}
+                user={user}
+                change={change} 
+                setChange={setChange} 
                 // images={item.target.files[0]}
             />
         )

@@ -68,7 +68,7 @@ function AddItemForm({ user, addNewItem }) {
                     <Form.Control type="float"
                         id="price"
                         value={price}
-                        onChange={(e) => setPrice(e.target.value)}
+                        onChange={(e) => setPrice(e.target.value).toFixed(2)}
                     />
                 </Form.Group>
                 <FloatingLabel>

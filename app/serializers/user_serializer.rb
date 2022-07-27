@@ -1,5 +1,5 @@
-class UsersSerializer < ActiveModel::Serializer
-  attributes :id, :username, :password, :fullname 
+class UserSerializer < ActiveModel::Serializer
+  attributes :id, :username, :fullname
 
   has_many :items 
 end

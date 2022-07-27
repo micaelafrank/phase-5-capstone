@@ -1,24 +1,34 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
+import { useRoutes } from 'react-router-dom';
 
-function ItemCard({ sold_by, itemname, item, id, color, price, description, images_url, material, condition, size}){
+function ItemCard({ item, sold_by, setChange, change, updateCartIcon, inUsersCart, user, updateUserCart, itemname, isForSale, id, color, price, description, images_url, material, condition, size}){
 
-    // function updateLikes() {
-    //     const likesUpdate = {
-    //         likes: toy.likes + 1,
-    //     };
-    //     fetch(`http://localhost:3001/toys/${id}`, {
-    //         method: "PATCH",
-    //         headers: { "Content-Type": "application/json" },
-    //         body: JSON.stringify(likesUpdate),
-    //     })
-    //         .then(res => res.json())
-    //         .then(handleToyLikes)
-    // }
+    function renderUserCartItem(){
+        // console.log(item)
+        // console.log(user)
+        // console.log(user.cart_id_show)
+
+        const newItemToAdd = {
+            user_cart_id: user.cart_id_show,
+            item_id: item.id,
+        }
+        console.log(newItemToAdd)
+        // const cartItem = item
+        fetch("/mycart", {
+            method: "POST",
+            headers: { 
+                "Content-Type": "application/json",
+         },
+            body: JSON.stringify(newItemToAdd),
+        })
+            .then(res => res.json())
+            .then(setChange(!change))
+    }
 
     return(
         <div className="one-item-card">
@@ -26,16 +36,28 @@ function ItemCard({ sold_by, itemname, item, id, color, price, description, imag
             <div className="item-card-header">
                 <div className="flex-item-icons-and-soldby">
                     <div className="item-header-icons">
-                        <div className="item-card-button">
-                            <BookmarkBorderOutlinedIcon />
-                            {/* <p style={{ paddingLeft: "8px" }}>Save Item</p> */}
+                        <div className="item-card-button heartItemButton" style={{ display: "flex", alignItems: "center", fontWeight: "bold" }}>
+                            <FavoriteBorderOutlinedIcon />
+                            <button
+                                style={{ padding: "5px", backgroundColor: "black", color: "white", fontWeight: "bold" }}
+                                // onClick={addToSaveList}
+                                >
+                                SAVE
+                            </button>
                         </div>
-                        <div className="item-card-button">
+                        <div 
+                        style={{display:"flex", alignItems:"center", paddingLeft:"15px", fontWeight:"bold"}} 
+                        className="item-card-button"
+                        >
                             <AddShoppingCartOutlinedIcon />
-                            {/* <p style={{ paddingLeft: "8px" }}>Add To Cart</p> */}
+                            <button
+                             style={{padding: "5px", backgroundColor:"black", color:"white", fontWeight:"bold"}}
+                                onClick={renderUserCartItem}
+                            >
+                                ADD TO CART
+                             </button>
                         </div>
                     </div>
-                    
                 </div>
             </div>
             {/* //end of item card header */}
@@ -45,7 +67,7 @@ function ItemCard({ sold_by, itemname, item, id, color, price, description, imag
                 <div className="item-middle-header">
                     <h3>{itemname}</h3>
                     <button className="details-btn">VIEW DETAILS</button>
-                    <img className="item-card-image" alt="Placeholder" src={images_url} style={{height:"22em", width:"18em"}} />
+                    <img className="item-card-image" alt="Placeholder" src={images_url} />
                 </div>
             </div>
 
@@ -64,10 +86,10 @@ function ItemCard({ sold_by, itemname, item, id, color, price, description, imag
                     <AccountCircleOutlinedIcon />
                     <p style={{ paddingLeft: "4px" }}>Posted by {item.sold_by}</p>
                 </div>
-                <div id="heartButton" className="item-price">
+                {/* <div id="heartButton" className="item-price">
                     <FavoriteBorderOutlinedIcon />
                     <p style={{ paddingLeft: "5px", color:"black"}}>Num of likes</p>
-                </div>
+                </div> */}
             </div>
         </div>
     )

@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import Badge from "@material-ui/core/Badge";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import Button from "@material-ui/core/Button";
+import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from "@material-ui/icons/Remove";
+import AddToCart from "./ShoppingCart";
 
-function Navigation({ user, setUser }) {
+function Navigation({ user, setUser, itemCount }) {
+    // const [itemCount, setItemCount] = useState(0);
     const navigate = useNavigate();
 
     // function handleLogout() {
@@ -25,6 +33,10 @@ function Navigation({ user, setUser }) {
         });
     }
 
+    function openShoppingCart(){
+        navigate("/mycart")
+    }
+
     return (
         <header className="navbarContainer">
             <div className="navbar-nav navbar-css">
@@ -42,9 +54,16 @@ function Navigation({ user, setUser }) {
             </div>
             <div id="userNav" style={{ paddingRight: "20px" }}>
                 <p style={{paddingRight:"20px"}}>Signed in as: <span style={{ fontWeight: "bold" }}>{user.username}</span></p>
-                <span id="userNavCartContainer">
+                <div style={{ display: "block", padding: 30 }}>
+                    <div onClick={openShoppingCart}>
+                        <Badge color="secondary" badgeContent={itemCount}>
+                            <ShoppingCartIcon />{" "}
+                        </Badge>
+                    </div>
+                </div>
+                    {/* <span id="userNavCartContainer">
                     <ShoppingCartOutlinedIcon />
-                </span>
+                </span> */}
             </div>
         </header>
     )};

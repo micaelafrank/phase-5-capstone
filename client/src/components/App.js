@@ -11,10 +11,13 @@ import ItemsList from './ItemsList';
 import Footer from './Footer';
 import AddItemForm from './AddItemForm';
 import { Route, Routes } from 'react-router-dom';
+import ShoppingCart from './ShoppingCart';
+//
 
 function App() {
   const [user, setUser] = useState({});
-  const [items, setItems] = useState([])
+  const [items, setItems] = useState([]);
+  const [change, setChange] = useState(false);
 
   function addNewItem(newItem) {
     setItems(...items, newItem)
@@ -39,7 +42,7 @@ function App() {
   // console.log(user);
 
   return (
-    <div className="App">
+    <div>
         <Routes>
             <Route element={<WithoutNav />}>
             <Route path="/login" element={<LogIn user={user} setUser={setUser} />} />
@@ -51,10 +54,11 @@ function App() {
             <Route element={<WithNav user={user} setUser={setUser} />}>
             <Route path="/profile" element={<Profile user={user} />} />
             <Route path="/sell" element={<AddItemForm addNewItem={addNewItem} user={user} />} />
-            <Route path="/buy" element={<ItemsList />} />
+            <Route path="/buy" element={<ItemsList change={change} setChange={setChange} user={user} />} />
+            <Route path="/mycart" element={<ShoppingCart user={user} items={items} />} />
           </Route>
         </Routes>
-        <Footer />
+      <Footer />
     </div>
   )
 }

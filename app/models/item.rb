@@ -1,5 +1,7 @@
 class Item < ApplicationRecord
-    belongs_to :user 
+    belongs_to :user
+    has_many :user_cart_items 
+
     has_many_attached :images
     # include Rails.application.routes.url_helpers
 

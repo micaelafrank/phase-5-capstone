@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
     resources :items 
     resources :users 
+    resources :user_cart_items
+    resources :user_carts, only: [:index, :show, :create, :destroy]
     # resources :admin_access_only, only: [:update, :destroy]
 
     post "/signup", to: "users#create"
@@ -13,5 +15,8 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy" 
     post "/sell", to: "items#create"
+    get "/mycart", to: "user_carts#show"
+    post "/create_cart" , to: "user_carts#create"
+    post "/mycart", to: "user_cart_items#create"
 
 end

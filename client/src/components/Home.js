@@ -7,13 +7,13 @@ function Home({ user }){
 
     return(
         <>
-            {/* {user.username?
-                <Navigation/> : ( */}
-                <header style={{ float:"right", height:"10em" }}>
-                    <button style={{ padding: "3px 10px", marginRight:"10px"}} onClick={() => navigate("/login")}>Login</button>
-                    <button style={{ padding:"3px 10px" }} onClick={() => navigate("/signup")}>Sign Up</button>
-                </header>
-            {/* )}  */}
+            {user?
+                <Navigation/> : (null
+                // <header style={{ float:"right", height:"10em" }}>
+                //     <button style={{ padding: "3px 10px", marginRight:"10px"}} onClick={() => navigate("/login")}>Login</button>
+                //     <button style={{ padding:"3px 10px" }} onClick={() => navigate("/signup")}>Sign Up</button>
+                // </header>
+             )} 
             <h1>TITLE</h1>
             <h2>Subtitle</h2>
             <h3>About</h3>

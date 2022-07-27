@@ -9,6 +9,7 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.string :size 
       t.string :condition 
       t.string :material
+      t.boolean :isForSale, :default => true
 
       t.timestamps
     end
