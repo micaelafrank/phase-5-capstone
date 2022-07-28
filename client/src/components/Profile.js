@@ -26,7 +26,7 @@ function Profile({ user }) {
                 </ul>
             </div>
             <div>
-                <h2>Items For Sale Now:</h2>
+                <h2>Items You're Selling Now:</h2>
                 <ul>
                     <li></li>
                     <li></li>

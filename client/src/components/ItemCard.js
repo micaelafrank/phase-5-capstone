@@ -1,25 +1,28 @@
 import React, {useContext, useState} from 'react';
-import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
+// import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
-import { useRoutes } from 'react-router-dom';
 
-function ItemCard({ item, sold_by, setChange, change, updateCartIcon, inUsersCart, user, updateUserCart, itemname, isForSale, id, color, price, description, images_url, material, condition, size}){
+
+function ItemCard({ item, sold_by, setChange, change, user, itemname, isForSale, id, color, price, description, images_url, material, condition, size}){
+    const [inCart, setInCart] = useState(false)
+
+    function handleCartClick() {
+        setInCart(inCart => (!inCart))
+    }
 
     function renderUserCartItem(){
-        // console.log(item)
-        // console.log(user)
-        // console.log(user.cart_id_show)
+        console.log(user)
 
         const newItemToAdd = {
-            user_cart_id: user.cart_id_show,
+            user_cart_id: user.user_cart.id,
             item_id: item.id,
         }
         console.log(newItemToAdd)
         // const cartItem = item
-        fetch("/mycart", {
+        fetch("/addtocart", {
             method: "POST",
             headers: { 
                 "Content-Type": "application/json",
@@ -28,6 +31,7 @@ function ItemCard({ item, sold_by, setChange, change, updateCartIcon, inUsersCar
         })
             .then(res => res.json())
             .then(setChange(!change))
+            handleCartClick();
     }
 
     return(
@@ -52,7 +56,8 @@ function ItemCard({ item, sold_by, setChange, change, updateCartIcon, inUsersCar
                             <AddShoppingCartOutlinedIcon />
                             <button
                              style={{padding: "5px", backgroundColor:"black", color:"white", fontWeight:"bold"}}
-                                onClick={renderUserCartItem}
+                                onClick={renderUserCartItem} 
+                                className={inCart ? "pointer-events" : null}
                             >
                                 ADD TO CART
                              </button>

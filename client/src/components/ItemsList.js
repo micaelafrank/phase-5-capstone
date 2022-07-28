@@ -32,6 +32,7 @@ function ItemsList({ user, cartItem, change, setChange }){
                 sold_by={item.sold_by}
                 likes={item.likes}
                 isForSale={item.isForSale}
+                // show_cart_id={item.show_cart_id}
                 images_url={item.images_url}
                 user={user}
                 change={change} 

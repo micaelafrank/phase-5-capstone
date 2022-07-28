@@ -1,6 +1,19 @@
 import React from "react";
+// import { useNavigate } from "react-router-dom";
 
-function CartItem({cartItem}) {
+function CartItem({cartItem, deleteItem, id}) {
+// const navigate = useNavigate();
+
+    function removeFromCart() {
+        fetch(`/user_cart_items/${id}`, { 
+            method: "DELETE" 
+        })
+        .then((r) => {
+            if (r.ok) {
+                deleteItem(cartItem);
+            }
+        });
+    }
 
     return (
         <div>
@@ -9,9 +22,9 @@ function CartItem({cartItem}) {
                 <p style={{position:"absolute", right:"340px"}}>${cartItem.price}</p>
             </div>
             <h5 style={{ marginLeft: "50px" }}>{cartItem.size}, {cartItem.color}</h5>
-            {/* <img src={cartItem.images_url} /> */}
+            <img src={cartItem.images_url} style={{width:"100px", height:"100px"}} />
             <div>
-                <button style={{ marginLeft: "50px" }}>Remove From Cart</button>
+                <button style={{ marginLeft: "50px" }} onClick={removeFromCart}>Remove From Cart</button>
             </div>
         </div>
     )}

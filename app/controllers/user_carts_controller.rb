@@ -26,11 +26,11 @@ rescue_from ActiveRecord::RecordInvalid, with: :item_invalid
         render json: new_user_cart, status: :ok 
     end
 
-    def destroy 
-        user_cart = find_user_cart
-        user_cart.destroy
-        head :no_content
-    end 
+    # def destroy 
+    #     removeItem = UserCart.Item.find(params[:id])
+    #     remove.destroy 
+    #     head :no_content
+    # end 
 
     private 
 

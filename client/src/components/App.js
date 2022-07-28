@@ -55,7 +55,7 @@ function App() {
             <Route path="/profile" element={<Profile user={user} />} />
             <Route path="/sell" element={<AddItemForm addNewItem={addNewItem} user={user} />} />
             <Route path="/buy" element={<ItemsList change={change} setChange={setChange} user={user} />} />
-            <Route path="/mycart" element={<ShoppingCart user={user} items={items} />} />
+            <Route path="/mycart" element={<ShoppingCart setChange={setChange} change={change} user={user} items={items} />} />
           </Route>
         </Routes>
       <Footer />

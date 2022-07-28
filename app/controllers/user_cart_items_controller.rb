@@ -25,19 +25,19 @@ rescue_from ActiveRecord::RecordInvalid, with: :item_invalid
     end
 
     def destroy
-        user_cart_items = UserCartItem.find(params[:id])
-        user_cart_items.destroy 
+        removeMe = UserCartItem.find_by(item_id: params[:item_id]) 
+        removeMe.destroy 
         head :no_content
     end 
 
     private 
 
     def uci_params
-        params.permit(:item_id, :user_cart_id)
+        params.permit(:item_id, :id, :user_cart_id)
     end
 
     def cant_show_user_cart_items
-        render json: {error: "Item no longer available"}, status: :not_available
+        render json: {error: "Item no longer available"}, status: :no_content
     end
 
     def item_invalid(invalid)

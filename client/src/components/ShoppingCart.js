@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CartItem from './CartItem';
 import Alert from 'react-bootstrap/Alert';
 
-function ShoppingCart({ change, user }){
+function ShoppingCart({ deleteItem }){
     const [cartItems, setCartItems] = useState([]);
 
     useEffect(() => {
@@ -10,6 +10,11 @@ function ShoppingCart({ change, user }){
             .then((r) => r.json())
             .then(data => setCartItems(data.items))
     }, [])
+
+    function deleteItem(id) {
+        const updatedCart = uniqueCartItems.filter((cartItem) => cartItem.id !== id);
+        setCartItems(updatedCart);
+    }
 
     const uniqueIds = [];
 
@@ -24,7 +29,8 @@ function ShoppingCart({ change, user }){
 
         return false;
     });
-  
+
+    // console.log(uniqueCartItems)
     return(
         <div className="summary">
             <Alert variant="success">You have {uniqueCartItems.length} items in your cart</Alert>
@@ -40,7 +46,12 @@ function ShoppingCart({ change, user }){
                 return (
                     <CartItem 
                     cartItem={cartItem}
-                    key={cartItem.id}>
+                    key={cartItem.id}
+                    id={cartItem.id}
+                    setCartItems={setCartItems}
+                    cartItems={cartItems}
+                    deleteItem={deleteItem}
+                    >
                     </CartItem>
                 )
             })}</div>

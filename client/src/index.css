@@ -105,6 +105,10 @@ padding: 20px;
   margin-bottom: 2em;
 }
 
+.pointer-events{
+  pointer-events: none;
+}
+
 .item-middle-header{
   align-items: center;
   text-align: center;

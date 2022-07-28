@@ -9,8 +9,8 @@ class User < ApplicationRecord
     #     self.firstname + ' ' + self.lastname
     # end
 
-    # def cart_id_show
-    #     self.user_cart.id
+    # def show_cart
+    #     cart = self.user_cart.id 
     # end
     
 end

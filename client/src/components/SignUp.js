@@ -10,6 +10,8 @@ function SignUp({ user, setUser }) {
     const [errors, setErrors] = useState([]);
     const [password_confirmation, setPasswordConfirmation] = useState("");
     const [userCart, setCart] = useState(null);
+
+    const [userFromSignup, setUserFromSignup] = useState({});
     // const [formData, setFormData] = useState("");
 
     const handleSignUp = (e) => {
@@ -23,24 +25,35 @@ function SignUp({ user, setUser }) {
             body: JSON.stringify({ fullname, email, username, password, password_confirmation }),
         }).then((r) => {
             if (r.ok) {
-                r.json().then((user) => setUser(user));
-                createCart(user);
+                r.json().then((user) => {
+                    setUser(user)
+                    console.log(user)
+                    fetch("/create_cart", {
+                        method: 'POST',
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({ user_id: user.id }),
+                    }).then((res) => res.json())
+                        .then(setCart(userCart))
+                })
+                .then(navigate("/home"));
             } else {
                 r.json().then((err) => setErrors(err.errors));
             }
         });
     }
 
-    function createCart(user) {
-            fetch("/create_cart", {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ user_id: user.id }),
-            }).then((data) => setCart(data));
-            navigate("/profile");
-    }
+    // function createCart(user) {
+    //         fetch("/create_cart", {
+    //             method: 'POST',
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify({ user_id: user.id }),
+    //         }).then((res) => res.json())
+    //           .then(setCart(userCart))
+    //         }
 
     return(
         <>
