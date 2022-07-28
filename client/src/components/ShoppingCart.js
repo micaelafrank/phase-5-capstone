@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CartItem from './CartItem';
 import Alert from 'react-bootstrap/Alert';
+import PayPalCheckout from './PayPalCheckout';
 
 function ShoppingCart({ deleteItem }){
     const [cartItems, setCartItems] = useState([]);
@@ -67,7 +68,9 @@ function ShoppingCart({ deleteItem }){
                 {/* <div class="total-value final-value" id="basket-total">{cart_total}</div> */}
             </div>
             <div style={{ padding: "40px", alignItems: "center", textAlign: "center" }}>
-                <button style={{ position:"absolute", right:"340px", padding:"12px 17px", alignItems: "center", textAlign:"center", fontSize:"14px"}} className="checkout-cta">Go to Secure Checkout</button>
+                {/* <button style={{ position:"absolute", right:"340px", padding:"12px 17px", alignItems: "center", textAlign:"center", fontSize:"14px"}} className="checkout-cta">*/}
+                <PayPalCheckout />
+                {/* </button> */}
             </div>
         </div>
 )}
