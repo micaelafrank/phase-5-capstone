@@ -4,10 +4,11 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
-
+import DetailModal from './DetailModal';
 
 function ItemCard({ item, sold_by, setChange, change, user, itemname, isForSale, id, color, price, description, images_url, material, condition, size}){
     const [inCart, setInCart] = useState(false)
+    const [modalShow, setModalShow] = React.useState(false);
 
     function handleCartClick() {
         setInCart(inCart => (!inCart))
@@ -68,10 +69,16 @@ function ItemCard({ item, sold_by, setChange, change, user, itemname, isForSale,
             {/* //end of item card header */}
 
             {/* //start of item card middle component -- item name with item photos */}
-            <div className="item-card-middle">
+            <div className="item-card-middle" style={{height:"25em"}}>
                 <div className="item-middle-header">
                     <h3>{itemname}</h3>
-                    <button className="details-btn">VIEW DETAILS</button>
+                    <>
+                        <button className="details-btn" onClick={() => setModalShow(true)}>VIEW DETAILS</button>
+                        {/* <DetailModal
+                            show={modalShow}
+                            onHide={() => setModalShow(false)}
+                        /> */}
+                    </>
                     <img className="item-card-image" alt="Placeholder" src={images_url} />
                 </div>
             </div>

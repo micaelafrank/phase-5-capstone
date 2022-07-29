@@ -28,8 +28,9 @@ function AddItemForm({ user, addNewItem }) {
     formData.append('material', material);
     formData.append('size', size);
     formData.append('condition', condition);
-    formData.append('user_id', user.id);
+    formData.append('username', user.id);
     formData.append('images', images);
+    console.log(user)
 
     
     function handleSubmit(e) {

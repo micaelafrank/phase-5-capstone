@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     delete "/logout", to: "sessions#destroy" 
     post "/sell", to: "items#create"
     get "/mycart", to: "user_carts#show"
-    # delete `/remove/${item_id}`, to: "user_cart_items#destroy"
+    # delete "/removeitem", to: "user_cart_items#destroy"
     post "/create_cart" , to: "user_carts#create"
     post "/addtocart", to: "user_cart_items#create"
 

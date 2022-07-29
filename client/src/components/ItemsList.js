@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ItemCard from './ItemCard';
 import SearchBar from './SearchBar';
+import DetailModal from './DetailModal';
 
 function ItemsList({ user, cartItem, change, setChange }){
     const [items, setItems] = useState([])
@@ -32,11 +33,14 @@ function ItemsList({ user, cartItem, change, setChange }){
                 sold_by={item.sold_by}
                 likes={item.likes}
                 isForSale={item.isForSale}
-                // show_cart_id={item.show_cart_id}
+                // search={search}
+                // handleSearch={setUserSearch}
                 images_url={item.images_url}
                 user={user}
                 change={change} 
-                setChange={setChange} 
+                setChange={setChange}
+                // show={modalShow}
+                // setModalShow={setModalShow}
                 // images={item.target.files[0]}
             />
         )

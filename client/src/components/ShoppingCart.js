@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CartItem from './CartItem';
 import Alert from 'react-bootstrap/Alert';
+import PayPalCheckout from './PayPalCheckout';
 
 function ShoppingCart({ deleteItem }){
     const [cartItems, setCartItems] = useState([]);
@@ -15,7 +16,7 @@ function ShoppingCart({ deleteItem }){
         const updatedCart = uniqueCartItems.filter((cartItem) => cartItem.id !== id);
         setCartItems(updatedCart);
     }
-
+    
     const uniqueIds = [];
 
     const uniqueCartItems = cartItems.filter(cartItem => {
@@ -28,18 +29,19 @@ function ShoppingCart({ deleteItem }){
         }
 
         return false;
-    });
+    }
+    );
 
     // console.log(uniqueCartItems)
     return(
         <div className="summary">
-            <Alert variant="success">You have {uniqueCartItems.length} items in your cart</Alert>
+            <div style={{backgroundColor:"lightgray", borderRadius:"5px", width:"70%", padding:"15px", textAlign:"center", border:"1px solid black", marginTop:"25px", alignItems:"center"}}variant="success">You have {uniqueCartItems.length} items in your cart</div>
             {/* <div class="summary-total-items"><span class="total-items">{total_cart_items}</span> Items in your Cart</div> */}
             {/* {showCart} */}
             <div>
                 <ul style={{ listStyleType:"none", fontWeight:"bold", display: "flex", margin:"50px"}}>
-                    <li>Item Name</li>
-                    <li style={{ position: "absolute", right: "340px" }}>Price</li>
+                    <li style={{fontSize:"18px"}}>Item Name</li>
+                    <li style={{ position: "absolute", fontSize: "18px", right: "340px" }}>Price</li>
                 </ul>
             </div>
             <div style={{margin: "30px" }}>{uniqueCartItems.map((cartItem) => {
@@ -67,7 +69,9 @@ function ShoppingCart({ deleteItem }){
                 {/* <div class="total-value final-value" id="basket-total">{cart_total}</div> */}
             </div>
             <div style={{ padding: "40px", alignItems: "center", textAlign: "center" }}>
-                <button style={{ position:"absolute", right:"340px", padding:"12px 17px", alignItems: "center", textAlign:"center", fontSize:"14px"}} className="checkout-cta">Go to Secure Checkout</button>
+                {/* <button style={{ position:"absolute", right:"340px", padding:"12px 17px", alignItems: "center", textAlign:"center", fontSize:"14px"}} className="checkout-cta">*/}
+                <PayPalCheckout />
+                {/* </button> */}
             </div>
         </div>
 )}
