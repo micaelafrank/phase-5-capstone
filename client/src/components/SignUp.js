@@ -37,7 +37,7 @@ function SignUp({ user, setUser }) {
                     }).then((res) => res.json())
                         .then(setCart(userCart))
                 })
-                .then(navigate("/home"));
+                .then(navigate("/"));
             } else {
                 r.json().then((err) => setErrors(err.errors));
             }

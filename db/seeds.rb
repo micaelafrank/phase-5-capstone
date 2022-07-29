@@ -15,7 +15,7 @@ puts "done seeding users!"
 7.times do 
     Item.create!(
         itemname: Faker::Commerce.product_name, 
-        price: Faker::Commerce.price(range: 0..30.0, as_string: true).toFixed(2),
+        price: Faker::Commerce.price(range: 0..30.0, as_string: true),
         description: Faker::Commerce.department,
         color: Faker::Commerce.color,
         user_id: 1,
