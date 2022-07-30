@@ -47,7 +47,7 @@ function ItemsList({ user, cartItem, change, setChange }){
     })
 
     return(
-        <div>
+        <div style={{backgroundColor:"yellow"}}>
             <SearchBar/>
             <div className="grid-container">
                 <div className="items-grid">{itemsList}</div>

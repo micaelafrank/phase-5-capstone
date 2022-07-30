@@ -14,7 +14,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :item_invalid
 
     def create 
         new_item = Item.new(item_params)
-        new_item.user_id = 1
+        new_item.user_id = params[:user_id]
         new_item.images.attach(params[:images])
         pp new_item
         if new_item.save

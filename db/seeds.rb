@@ -18,7 +18,7 @@ puts "done seeding users!"
         price: Faker::Commerce.price(range: 0..30.0, as_string: true),
         description: Faker::Commerce.department,
         color: Faker::Commerce.color,
-        user_id: 1,
+        user_id: 7,
         size: "small",
         condition: Faker::Commerce.color,
         material: Faker::Commerce.material

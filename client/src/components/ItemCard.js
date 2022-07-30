@@ -96,7 +96,7 @@ function ItemCard({ item, sold_by, setChange, change, user, itemname, isForSale,
                 </div>
                 <div className="item-price item-card-user-button-name">
                     <AccountCircleOutlinedIcon />
-                    <p style={{ paddingLeft: "4px" }}>Posted by {item.sold_by}</p>
+                    <p style={{ paddingLeft: "4px" }}>Posted by {sold_by}</p>
                 </div>
                 {/* <div id="heartButton" className="item-price">
                     <FavoriteBorderOutlinedIcon />

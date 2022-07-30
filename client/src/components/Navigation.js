@@ -56,8 +56,8 @@ function Navigation({ user, setUser, itemCount }) {
                 <p style={{paddingRight:"20px"}}>Signed in as: <span style={{ fontWeight: "bold" }}>{user.username}</span></p>
                 <div style={{ display: "block", padding: 30 }}>
                     <div onClick={openShoppingCart}>
-                        <Badge color="secondary" badgeContent={itemCount}>
-                            <ShoppingCartIcon />{" "}
+                        <Badge color="secondary" badgeContent={itemCount} alignItems="center">
+                            View Cart< ShoppingCartIcon />{" "}
                         </Badge>
                     </div>
                 </div>

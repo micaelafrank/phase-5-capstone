@@ -19,6 +19,7 @@ function AddItemForm({ user, addNewItem }) {
         console.log(e.target.files[0]);
         setImages(e.target.files[0])
     };
+    console.log(user)
 
    const formData = new FormData();
     formData.append('itemname', itemname);
@@ -28,7 +29,7 @@ function AddItemForm({ user, addNewItem }) {
     formData.append('material', material);
     formData.append('size', size);
     formData.append('condition', condition);
-    formData.append('username', user.id);
+    formData.append('user_id', user.id);
     formData.append('images', images);
     console.log(user)
 
