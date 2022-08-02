@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#private access keys 
+.env
+client/public/.env 
+/client/public/.env

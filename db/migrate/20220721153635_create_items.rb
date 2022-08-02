@@ -8,11 +8,9 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.integer :user_id 
       t.string :size 
       t.string :condition 
-      t.string :material 
-      # t.string :image1
-      # t.string :image2
-      # t.string :image3
-      # t.string :image4
+      t.string :material
+      t.boolean :isForSale, :default => true
+
       t.timestamps
     end
   end

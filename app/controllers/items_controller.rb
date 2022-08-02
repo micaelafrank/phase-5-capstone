@@ -13,8 +13,16 @@ rescue_from ActiveRecord::RecordInvalid, with: :item_invalid
     end
 
     def create 
-        new_item = Item.create!(item_params)
-        render json: new_item, status: :created
+        new_item = Item.new(item_params)
+        new_item.user_id = params[:user_id]
+        new_item.images.attach(params[:images])
+        pp new_item
+        if new_item.save
+            render json: new_item, status: :created
+            pp new_item.images
+        else
+            pp new_item.errors.full_messages
+        end
     end
 
     def update
@@ -32,7 +40,8 @@ rescue_from ActiveRecord::RecordInvalid, with: :item_invalid
     private 
 
     def item_params
-        params.permit(:itemname, :price, :description, :color, :size, :condition, :material, :user_id, :image1, :image2, :image3, :image4)
+        params.permit(:itemname, :images_url, :price, :description, :color, :size, :condition, :material, :user_id, images: [])
+        # params.require(:item).permit(:itemname, :price, :description, :color, :size, :condition, :user_id, images: [])
     end
 
     def find_item
