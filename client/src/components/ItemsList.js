@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import ItemCard from './ItemCard';
-import SearchBar from './SearchBar';
+import ItemCardNew from './ItemCardNew';
+// import SearchBar from './SearchBar';
 import DetailModal from './DetailModal';
 
 function ItemsList({ user, cartItem, change, setChange }){
+    // handleDeleteMyItem, handleUpdateItems,
     const [items, setItems] = useState([])
 
     useEffect(() => {
@@ -16,9 +17,18 @@ function ItemsList({ user, cartItem, change, setChange }){
     //     setItems(...items, newItem);
     // }
 
+//     function handleDeleteMyItem() {
+//         fetch(`/items/${id}`, {
+//             method: 'DELETE',
+//         });
+
+//         const updatedItems = items.filter((item) => item.id !== id);
+//         handleUpdateItems(updatedItems);
+//     }
+// }
     const itemsList = items.map((item) => {
         return (
-            <ItemCard
+            <ItemCardNew
                 item={item}
                 key={item.id}
                 user_id={item.user_id}
@@ -33,22 +43,19 @@ function ItemsList({ user, cartItem, change, setChange }){
                 sold_by={item.sold_by}
                 likes={item.likes}
                 isForSale={item.isForSale}
-                // search={search}
-                // handleSearch={setUserSearch}
                 images_url={item.images_url}
                 user={user}
                 change={change} 
                 setChange={setChange}
-                // show={modalShow}
-                // setModalShow={setModalShow}
-                // images={item.target.files[0]}
+                // handleDeleteMyItem={handleDeleteMyItem}
+                // handleUpdateItems={handleUpdateItems}
             />
         )
     })
 
     return(
-        <div style={{backgroundColor:"yellow"}}>
-            <SearchBar/>
+        <div>
+            {/* <SearchBar/> */}
             <div className="grid-container">
                 <div className="items-grid">{itemsList}</div>
             </div>

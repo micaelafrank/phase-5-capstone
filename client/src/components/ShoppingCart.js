@@ -1,10 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import CartItem from './CartItem';
-import Alert from 'react-bootstrap/Alert';
-import PayPalCheckout from './PayPalCheckout';
+import StripeCheckout from 'react-stripe-checkout';
+import StripeContainer from './StripeContainer';
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutForm from "./CheckoutForm";
 
-function ShoppingCart({ deleteItem }){
+function ShoppingCart({ deleteItem, items, total }){
     const [cartItems, setCartItems] = useState([]);
+    const [addedCartItems, setAddedCartItems] = useState(0); 
+
+
+function deleteItem(id) {
+    const updatedCart = uniqueCartItems.filter((cartItem) => cartItem.id !== id);
+    setCartItems(updatedCart);
+}
+
+const uniqueIds = [];
+
+const uniqueCartItems = cartItems.filter(cartItem => {
+    const isDuplicate = uniqueIds.includes(cartItem.id);
+
+    if (!isDuplicate) {
+        uniqueIds.push(cartItem.id);
+
+        return true;
+    }
+
+    return false;
+}
+);
 
     useEffect(() => {
         fetch("/mycart")
@@ -12,25 +37,13 @@ function ShoppingCart({ deleteItem }){
             .then(data => setCartItems(data.items))
     }, [])
 
-    function deleteItem(id) {
-        const updatedCart = uniqueCartItems.filter((cartItem) => cartItem.id !== id);
-        setCartItems(updatedCart);
-    }
-    
-    const uniqueIds = [];
-
-    const uniqueCartItems = cartItems.filter(cartItem => {
-        const isDuplicate = uniqueIds.includes(cartItem.id);
-
-        if (!isDuplicate) {
-            uniqueIds.push(cartItem.id);
-
-            return true;
-        }
-
-        return false;
-    }
-    );
+    useEffect(() => {
+        let total = 0;
+        uniqueCartItems.map((item) => {
+         total += item.price
+        })
+        setAddedCartItems(total)
+    }, [cartItems])
 
     // console.log(uniqueCartItems)
     return(
@@ -50,30 +63,21 @@ function ShoppingCart({ deleteItem }){
                     cartItem={cartItem}
                     key={cartItem.id}
                     id={cartItem.id}
+                    price={cartItem.price}
                     setCartItems={setCartItems}
                     cartItems={cartItems}
                     deleteItem={deleteItem}
-                    >
+                    >   
                     </CartItem>
                 )
             })}</div>
             <div>
                 <ul style={{ listStyleType: "none", fontWeight: "bold", display: "flex", margin: "50px" }}>
-                    <li style={{ position: "absolute", right: "340px" }}>Total: SUM</li>
+                    <li style={{ position: "absolute", right: "340px" }}>Total: {addedCartItems}</li>
                 </ul>
             </div>
-            <div className="summary-total">
-                <div className="total-title">
-                    {/* Total: {sum} */}
-                </div>
-                {/* <div class="total-value final-value" id="basket-total">{cart_total}</div> */}
-            </div>
-            <div style={{ padding: "40px", alignItems: "center", textAlign: "center" }}>
-                {/* <button style={{ position:"absolute", right:"340px", padding:"12px 17px", alignItems: "center", textAlign:"center", fontSize:"14px"}} className="checkout-cta">*/}
-                <PayPalCheckout />
-                {/* </button> */}
-            </div>
+            <StripeContainer total={addedCartItems} />
         </div>
-)}
+)};
 
 export default ShoppingCart;

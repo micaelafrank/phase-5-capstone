@@ -5,14 +5,24 @@ import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 import DetailModal from './DetailModal';
+import Carousel from 'react-bootstrap/Carousel';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
-function ItemCard({ item, sold_by, setChange, change, user, itemname, isForSale, id, color, price, description, images_url, material, condition, size}){
+// import StripeContainer from './StripeContainer';
+
+function ItemCard({ item, sold_by, setChange, handleCartClick, change, user, itemname, isForSale, id, color, price, description, images_url, material, condition, size }){
+    // handleDeleteMyItem, handleUpdateItem,
     const [inCart, setInCart] = useState(false)
-    const [modalShow, setModalShow] = React.useState(false);
+    const [details, setDetails] = useState(false)
 
     function handleCartClick() {
         setInCart(inCart => (!inCart))
     }
+
+    // function handleUpdateItem(){
+
+    // }
 
     function renderUserCartItem(){
         console.log(user)
@@ -36,11 +46,12 @@ function ItemCard({ item, sold_by, setChange, change, user, itemname, isForSale,
     }
 
     return(
-        <div className="one-item-card">
+        <div className="one-item-card card">
             {/* start of header for item card */}
+            {/* one-item-card
             <div className="item-card-header">
                 <div className="flex-item-icons-and-soldby">
-                    <div className="item-header-icons">
+                    <div className="item-header-icons"> */}
                         <div className="item-card-button heartItemButton" style={{ display: "flex", alignItems: "center", fontWeight: "bold" }}>
                             <FavoriteBorderOutlinedIcon />
                             <button
@@ -63,25 +74,47 @@ function ItemCard({ item, sold_by, setChange, change, user, itemname, isForSale,
                                 ADD TO CART
                              </button>
                         </div>
-                    </div>
+                    {/* </div>
                 </div>
-            </div>
+            </div> */}
             {/* //end of item card header */}
 
             {/* //start of item card middle component -- item name with item photos */}
             <div className="item-card-middle" style={{height:"25em"}}>
                 <div className="item-middle-header">
+                    
                     <h3>{itemname}</h3>
-                    <>
-                        <button className="details-btn" onClick={() => setModalShow(true)}>VIEW DETAILS</button>
-                        {/* <DetailModal
-                            show={modalShow}
-                            onHide={() => setModalShow(false)}
-                        /> */}
+                    <>  
+                        <button onClick={() => setDetails(true)} >
+                            VIEW DETAILS
+                        </button>
                     </>
-                    <img className="item-card-image" alt="Placeholder" src={images_url} />
+                    <Carousel>
+                        <Carousel.Item>
+                            <img 
+                                className="item-card-image d-block w-100" 
+                                alt="1st Slide Image" 
+                                src={images_url} 
+                            />
+                        </Carousel.Item>
+                        {/* <Carousel.Item>
+                            <img
+                                className="item-card-image d-block w-100"
+                                alt="2nd Slide Image"
+                                src={images_url}
+                            />
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img
+                                className="item-card-image d-block w-100"
+                                alt="3rd Slide Image"
+                                src={images_url}
+                            />
+                        </Carousel.Item> */}
+                    </Carousel>
                 </div>
             </div>
+            
 
             {/* bottom part of item card component -- price, likes, comments, buy, and view more */}
             <div className="item-card-bottom">
@@ -89,9 +122,6 @@ function ItemCard({ item, sold_by, setChange, change, user, itemname, isForSale,
                     <div className="item-price">
                         <SellOutlinedIcon style={{ paddingRight: "4px" }} />
                         <p style={{ paddingRight: "14px" }}>${price}</p>
-                    </div>
-                    <div className="item-card-buy-button">
-                        <button className="buy-btn">BUY NOW</button>
                     </div>
                 </div>
                 <div className="item-price item-card-user-button-name">
@@ -103,6 +133,7 @@ function ItemCard({ item, sold_by, setChange, change, user, itemname, isForSale,
                     <p style={{ paddingLeft: "5px", color:"black"}}>Num of likes</p>
                 </div> */}
             </div>
+            {/* <DetailModal /> */}
         </div>
     )
 }

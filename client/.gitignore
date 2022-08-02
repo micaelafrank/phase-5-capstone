@@ -24,3 +24,5 @@ yarn-error.log*
 
 #private access keys 
 .env
+client/public/.env 
+/client/public/.env

@@ -12,6 +12,9 @@ import Footer from './Footer';
 import AddItemForm from './AddItemForm';
 import { Route, Routes } from 'react-router-dom';
 import ShoppingCart from './ShoppingCart';
+import NewForm from './NewForm';
+import StripeContainer from './StripeContainer';
+import PurchaseLandingPage from './PurchaseLandingPage';
 //
 
 function App() {
@@ -37,7 +40,7 @@ function App() {
     })
   }, [])
   // console.log(user);
-
+  
   return (
     <div>
         <Routes>
@@ -52,10 +55,12 @@ function App() {
             <Route path="/profile" element={<Profile user={user} />} />
             <Route path="/sell" element={<AddItemForm addNewItem={addNewItem} user={user} />} />
             <Route path="/buy" element={<ItemsList change={change} setChange={setChange} user={user} />} />
-            <Route path="/mycart" element={<ShoppingCart setChange={setChange} change={change} user={user} items={items} />} />
+            <Route path="/checkout" element={<StripeContainer total={1000} />} />
+            <Route path="/orderconfirmation" element={<PurchaseLandingPage items={items} user={user} />} />
+            <Route path="/mycart" element={<ShoppingCart total={items} setChange={setChange} change={change} user={user} items={items} />} />
           </Route>
         </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

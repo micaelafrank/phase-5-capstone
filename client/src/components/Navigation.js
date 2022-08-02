@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddToCart from "./ShoppingCart";
+import { red } from "@mui/material/colors";
 
 function Navigation({ user, setUser, itemCount }) {
     // const [itemCount, setItemCount] = useState(0);
@@ -38,17 +39,18 @@ function Navigation({ user, setUser, itemCount }) {
     }
 
     return (
-        <header className="navbarContainer">
+        <header className="navbarContainer" >
             <div className="navbar-nav navbar-css">
-                <Link className="nav-item" exact="true" to="/">Home</Link>
+                <a href="/"><img src="./rainbow-logo.png" width="100px" style={{ paddingLeft: "15px", paddingRight: "10px"}} /></a>
+                {/* <Link className="nav-item" exact="true" to="/">Home</Link> */}
                 {/* {user ? (
                 <button onClick={handleLogout}>Logout</button>
                 ) : (  */}
-                <Link className="nav-item" to="/profile">Profile</Link>
-                <Link className="nav-item" to="/buy">Buy</Link>
-                <Link className="nav-item" to="/sell">Sell</Link>
                 <div className="centered">
-                    <button className="nav-button" onClick={handleLogout}>Logout</button>
+                    <button className="nav-button" style={{ color: "black", border: "2px solid black" }}><Link to="/profile">Profile</Link></button>
+                    <button className="nav-button" style={{ color: "black", border: "2px solid black" }}><Link to="/buy">Buy</Link></button>
+                    <button className="nav-button" style={{ color: "black", border: "2px solid black" }}><Link to="/sell">Sell</Link></button>
+                    <button className="nav-button" style={{ color: "black", border: "2px solid black" }} onClick={handleLogout}>Logout</button>
                 {/* )} */}
                 </div>
             </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { useNavigate } from 'react-router-dom';
+import ItemCard from './ItemCard'
 
 function AddItemForm({ user, addNewItem }) {
     const [itemname, setItemName] = useState("")
@@ -53,11 +54,11 @@ function AddItemForm({ user, addNewItem }) {
     }
 
     return(
-        <>
-            <h1>SELL NEW ITEM:</h1>
-            <form onSubmit={handleSubmit}> 
-                <Form.Group className="mb-3">
-                    <Form.Label htmlFor="name">Item Name:</Form.Label>
+        <div style={{display:"flex"}}>
+            <form className="new-plant-form" id="item-form" style={{width:"600px", paddingLeft:"20px", height:"auto"}} onSubmit={handleSubmit}> 
+                <h1>Add a new item for sale:</h1>
+                <Form.Group style={{paddingBottom:"20px"}} className="mb-3">
+                    <Form.Label style={{ paddingRight: "10px" }} htmlFor="name">Item Name:</Form.Label>
                     <Form.Control type="text" 
                         id="itemname"
                         value={itemname}
@@ -65,35 +66,38 @@ function AddItemForm({ user, addNewItem }) {
                     />
                 </Form.Group>
 
-                <Form.Group className="mb-3">
-                    <Form.Label htmlFor="price">Price:</Form.Label>
+                <Form.Group className="mb-3" style={{ paddingBottom: "20px" }}>
+                    <Form.Label htmlFor="price" style={{paddingRight:"10px"}}>Price:</Form.Label>
                     <Form.Control type="float"
                         id="price"
                         value={price}
                         onChange={(e) => setPrice(e.target.value).toFixed(2)}
                     />
                 </Form.Group>
-                <FloatingLabel>
+                <Form.Label style={{ paddingRight: "10px"}} htmlFor="description">Description:</Form.Label>
+                <FloatingLabel style={{paddingTop:"20px"}}>
                     <Form.Control
                     as="textarea"
                     placeholder="Enter a description"
-                    style={{ height: '100px' }}
+                    style={{ height: '100px', width:"400px"}}
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     />
                 </FloatingLabel>
 
-                <Form.Label htmlFor="exampleColorInput">Select color (optional):</Form.Label>
+                <Form.Label style={{ paddingRight: "10px", paddingTop: "20px" }} 
+                    htmlFor="exampleColorInput">Color:</Form.Label>
                 <Form.Control
                     type="color"
+                    style={{marginTop:"10px"}}
                     id="color"
                     title="Choose your color"
                     value={color}
                     onChange={(e) => setColor(e.target.value)}
                 />
 
-                <Form.Group className="mb-3">
-                    <Form.Label htmlFor="name">Material:</Form.Label>
+                <Form.Group style={{paddingTop:"20px"}} className="mb-3">
+                    <Form.Label style={{ paddingRight: "10px"}} htmlFor="name">Brand/Material:</Form.Label>
                     <Form.Control type="text"
                         id="material"
                         value={material}
@@ -101,8 +105,8 @@ function AddItemForm({ user, addNewItem }) {
                     />
                 </Form.Group>
 
-                <Form.Group className="mb-3">
-                    <label htmlFor="type">Size</label>
+                <Form.Group style={{ paddingTop: "20px" }} className="mb-3">
+                    <label style={{ paddingRight: "10px" }} htmlFor="type">Size:</label>
                     <select
                         id="type"
                         value={size}
@@ -134,12 +138,27 @@ function AddItemForm({ user, addNewItem }) {
                         <option value="12">12</option>
                         <option value="14">14</option>
                         <option value="16">16</option>
+                        <option value="W5">W5</option>
+                        <option value="W6">W6</option>
+                        <option value="W7">W7</option>
+                        <option value="W8">W8</option>
+                        <option value="W9">W9</option>
+                        <option value="W10">W10</option>
+                        <option value="W11">W11</option>
+                        <option value="M7">M7</option>
+                        <option value="M8">M8</option>
+                        <option value="M9">M9</option>
+                        <option value="M10">M10</option>
+                        <option value="M11">M11</option>
+                        <option value="M12">M12</option>
+                        <option value="M13">M13</option>
+                        <option value="M14">M14</option>
                         <option value="NA">N/A</option>
                     </select>
                 </Form.Group>
 
-                <Form.Group className="mb-3">
-                    <label htmlFor="type">Condition</label>
+                <Form.Group style={{ paddingTop: "20px" }} className="mb-3">
+                    <label style={{ paddingRight: "10px" }} htmlFor="type">Condition:</label>
                     <select
                         id="condition"
                         value={condition}
@@ -154,18 +173,36 @@ function AddItemForm({ user, addNewItem }) {
                     </select>
                 </Form.Group>
 
-                <Form.Group className="mb-3">
-                    <label>Upload images:</label>
+                <Form.Group style={{ paddingTop: "20px" }} className="mb-3">
+                    <label style={{ paddingRight: "10px" }}>Upload images:</label>
                     <input type="file"
                     id="file" 
+                    multiple 
                     name="file"
                     accept="image/*"
                     onChange={handleImages} 
                     />
                 </Form.Group>  
-                <button style={{padding:"5px 12px"}} type="submit">Submit</button>
+                <button style={{ marginTop:"20px", padding:"10px 25px"}} type="submit">Submit</button>
             </form>
-        </>
+
+                <div id="item-preview">
+                <h1>Double check your info:</h1>
+                <div className="item-preview-container">
+                    <h1>{itemname}</h1>
+                    <h2>${price}</h2>
+                    <p style={{ inlineSize:"400px", wordWrap:"break-word"}}>{description}</p>
+                    <p>Condition: {condition}</p>
+                    <div>
+                        <p>Color: {color}</p>
+                        <div style={{width:"50px", height:"50px", backgroundColor:color}}></div>
+                    </div>
+                    <p>{material}</p>
+                    <p>Size: {size}</p>
+                    <img src={handleImages} style={{width:"200px", height:"auto"}} />
+                </div>
+                </div>
+        </div>
     )
 }
 

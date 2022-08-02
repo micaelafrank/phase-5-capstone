@@ -19,13 +19,6 @@ function Profile({ user }) {
             </div>
             <h3>Welcome!</h3>
             <div>
-                <h2>Active Offers:</h2>
-                <ul>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </div>
-            <div>
                 <h2>Items You're Selling Now:</h2>
                 <ul>
                     <li></li>

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+// import { Form } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
+
 
 function SignUp({ user, setUser }) {
     const navigate = useNavigate();
@@ -61,42 +64,59 @@ function SignUp({ user, setUser }) {
                 <button style={{ padding: "3px 10px", marginRight: "10px" }} onClick={() => navigate("/home")}>Home</button>
                 <button style={{ padding: "3px 10px" }} onClick={() => navigate("/login")}>Login</button>
             </header>
-            <h1>I am signing up</h1>
             <form onSubmit={handleSignUp}>
-                <label>First and last name:</label>
-                <input 
-                type="text" id="fullname"
-                value={fullname}
-                onChange={(e) => setFullname(e.target.value)}
-                />
+                <h1>Sign Up</h1>
+                <Form.Group>
+                    <Form.Label>First and last name:</Form.Label>
+                    <Form.Control 
+                    type="text" id="fullname"
+                    value={fullname}
+                    onChange={(e) => setFullname(e.target.value)}
+                    />
+                </Form.Group>
 
-                <label>Email Address:</label>
-                <input
-                type="text" id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                />
+                <Form.Group>
+                    <Form.Label>Email Address:</Form.Label>
+                    <Form.Control
+                    type="text" id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    />
+                </Form.Group>
 
-                <label>Pick a username:</label>
-                <input
-                type="text" id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                />
+                <Form.Group>
+                    <Form.Label>Pick a username:</Form.Label>
+                    <Form.Control
+                    type="text" id="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    />
+                </Form.Group>
 
-                <label>Password:</label>
-                <input
-                type="password" id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                />
+                <Form.Group>
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control
+                    type="password" id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    />
+                </Form.Group>
 
-                <label>Password:</label>
-                <input
-                type="password" id="passwordConfirmation"
-                value={password_confirmation}
-                onChange={(e) => setPasswordConfirmation(e.target.value)}
-                />
+                <Form.Group>
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control
+                    type="password" id="passwordConfirmation"
+                    value={password_confirmation}
+                    onChange={(e) => setPasswordConfirmation(e.target.value)}
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Check
+                        type="checkbox"
+                        id="checkbox"
+                        label="I agree to the Terms and Conditions"
+                    />
+                </Form.Group>
                 <button type="submit">Sign Up</button>
             </form>
         </>
