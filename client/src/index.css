@@ -81,6 +81,30 @@ code {
   animation-delay: 2s;
 }
 
+.card-title{
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 7px;
+}
+
+.card-description{
+  margin-left: 7px;
+}
+
+.card-button{
+  padding: 10px;
+  background-color: green;
+  align-items: center;
+  border-radius: 15px;
+  text-align: center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  color: white;
+  border: 1px solid white;
+  margin-bottom: 10px;
+}
+
 .homepage-image-top {
   animation-name: rotate;
   animation-duration: 2s;
@@ -117,6 +141,15 @@ code {
   margin: 0.75em 1em;
 }
 
+body {
+  background: #f4f4f4;
+}
+
+.banner {
+  background: #a770ef;
+  background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+  background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+}
 
 
 .nav-button { 
@@ -444,7 +477,7 @@ div.order-button>button:disabled {
 .new-plant-form {
   padding: 2rem 1rem;
   margin: 2rem 0;
-  background-color: rgba(181, 250, 181, 0.5);
+  background-color: white;
   border: 1px solid black;
 }
 

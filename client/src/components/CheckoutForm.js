@@ -5,7 +5,8 @@ import {
     useElements
 } from "@stripe/react-stripe-js";
 
-export default function CheckoutForm() {
+export default function CheckoutForm({user_id}) {
+    console.log(user_id)
     const stripe = useStripe();
     const elements = useElements();
 
@@ -61,6 +62,10 @@ export default function CheckoutForm() {
                 return_url: "http://localhost:4000/orderconfirmation",
             },
         });
+
+        fetch(`user_cart_items/emptycart`, {
+            method: "DELETE",
+        })
 
         // This point will only be reached if there is an immediate error when
         // confirming the payment. Otherwise, your customer will be redirected to

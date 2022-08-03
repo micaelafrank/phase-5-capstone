@@ -26,6 +26,11 @@ rescue_from ActiveRecord::RecordInvalid, with: :item_invalid
         render json: new_user_cart, status: :ok 
     end
 
+    def update
+        new_user_cart = UserCart.update!(isCheckedOut: true)
+        render json: new_user_cart, status: :updated
+    end
+
     # def destroy 
     #     removeItem = UserCart.Item.find(params[:id])
     #     remove.destroy 
