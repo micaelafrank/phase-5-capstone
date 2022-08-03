@@ -31,30 +31,31 @@ function LogIn({ setUser, user }){
 
     return(
         <div className="LoginPage">
+            <div className="login-background">   
                 <form className="login-form" onSubmit={handleLogin}>
                 <h1 className="login-header">Log In</h1>
-                    <div style={{ padding: "20px", alignItems: "center", justifyContent: "center", margin: "auto" }}>   
-                        <label style={{ color: "black", alignItems: "center", textAlign: "center", margin: "0" }}>Username: </label>
-                        <input type="text"
-                        style={{ alignItems: "center", padding:"10px", width:"300px", margin:"auto" }}
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        /><br></br>
+                    <label style={{ color: "black", alignItems: "center", textAlign: "center", margin: "0" }}>Username: </label>
+                    <input type="text"
+                    style={{ alignItems: "center", padding:"10px", width:"300px", margin:"auto" }}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    /><br></br>
 
-                        <label style={{color:"black", paddingTop:"100px"}}>Password: </label>
-                        <input type="password"
-                        style={{ padding: "10px", marginTop: "20px", width: "300px", marginLeft:"0", marginRight:"0"}}
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        />
-                        </div>
-                        <button className="login-btn" style={{alignItems:"center", textAlign:"center", justifyContent:"center" }} type="submit">Login</button>
+                    <label style={{color:"black", paddingTop:"100px"}}>Password: </label>
+                    <input type="password"
+                    style={{ padding: "10px", marginTop: "20px", width: "300px", marginLeft:"0", marginRight:"0"}}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <button className="login100-form-btn" style={{alignItems:"center", textAlign:"center", justifyContent:"center" }} type="submit">Login</button>
                 </form>
+            </div>
+
                 <div style={{display:"flex", alignItems:"center", justifyContent: "center", margin:"20px"}}>
-                <button style={{ padding: "10px 24px", fontSize: "15px", borderRadius: "5px", marginRight: "10px", alignItems:"center" }} onClick={() => navigate("/")}>Home</button>
-                <button style={{ padding: "10px 24px", fontSize: "15px", borderRadius: "5px", alignItems: "center" }} onClick={() => navigate("/signup")}>Sign Up</button>
-                </div>
-        </div>
+                    <button style={{ padding: "10px 24px", fontSize: "15px", borderRadius: "5px", marginRight: "10px", alignItems:"center" }} onClick={() => navigate("/")}>Home</button>
+                    <button style={{ padding: "10px 24px", fontSize: "15px", borderRadius: "5px", alignItems: "center" }} onClick={() => navigate("/signup")}>Sign Up</button>
+                </div> 
+            </div>
     );
 }
 

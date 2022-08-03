@@ -26,8 +26,10 @@ function CartItem({cartItem, deleteItem, id}) {
             </div>
             <h5 style={{ marginLeft: "50px" }}>Size:{cartItem.size}, Color:{cartItem.color}</h5>
             <p style={{ marginLeft: "50px" }}>{cartItem.description}</p>
-            <div style={{marginTop:"10px"}}>
-                <button style={{ marginLeft: "50px",padding:"10px"}} onClick={removeFromCart}>Remove From Cart</button>
+            <div style={{marginTop:"10px", display:"flex", alignItems:"center", textAlign:"center"}}>
+                <button style={{ marginLeft: "50px",padding:"10px"}} onClick={removeFromCart}>
+                Remove from cart 
+                </button>
             </div>
         </div>
     )}

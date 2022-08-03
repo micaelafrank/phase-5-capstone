@@ -44,9 +44,10 @@ body {
 }
 
 .LoginPage{
-  /* background-image: url("../public/cube-background.jpg"); */
+  /* background-image: url("../public/cube-login.png"); */
   background-repeat: repeat-x;
-  background-size: auto 90%;
+  background-size: contain;
+  background-color: white;
   height: 900px;
   align-items: center;
   padding-top: 50px;
@@ -508,5 +509,4 @@ div.order-button>button:disabled {
 img{
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
-  border-bottom: 1px solid black;
 }
