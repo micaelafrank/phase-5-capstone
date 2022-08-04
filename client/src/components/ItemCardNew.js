@@ -8,6 +8,7 @@ function ItemCardNew({ item, sold_by, setChange, items, setItems, handleCartClic
     const [wasClicked, setWasClicked] = useState(false)
     const [open, setOpen] = useState(false);
 
+
     console.log(open)
     const handleModalBtn = (e) => {
         console.log(e.target)
@@ -88,10 +89,11 @@ function ItemCardNew({ item, sold_by, setChange, items, setItems, handleCartClic
                         </div>
                     </div>
                     {user.id === item.user_id ? 
-                    <Button className="card-button"
+                    <Button className="cardButtonDelete"
                     onClick={()=> setOpen(true)}>Delete</Button> : 
-                    (<Button className="card-button"
-                    onClick={renderUserCartItem}
+                    (<Button className={!wasClicked ? "cardButtonAddCart" : "cardButtonAdded"}
+                    onClick={renderUserCartItem} 
+                    style={{backgroundColor: !wasClicked ? "light gray" : "green"}}
                     variant="primary">
                         Add To Cart
                     </Button>)}
