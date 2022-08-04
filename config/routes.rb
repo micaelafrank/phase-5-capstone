@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
     resources :items 
     resources :users 
-    resources :user_cart_items, only: [:destroy, :emptycart]
+    resources :user_cart_items, only: [:destroy, :emptyCart]
     resources :user_carts, only: [:index, :show, :create]
     # resources :admin_access_only, only: [:update, :destroy]
 
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     # delete "/removeitem", to: "user_cart_items#destroy"
     post "/create_cart" , to: "user_carts#create"
     post "/addtocart", to: "user_cart_items#create"
-    delete "/emptycart", to: "user_cart_items#emptycart"
+    delete `user_cart_items/emptycart`, to: "user_cart_items#emptycart"
     post '/create-payment-intent', to: 'checkout#create_payment_intent'
 
 end

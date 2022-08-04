@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ItemCardNew from './ItemCardNew';
 // import SearchBar from './SearchBar';
+import DetailModal from './DetailModal';
 
-function ItemsList({ user, cartItem, change, setChange}){
+function ItemsList({ user, cartItem, change, setChange }){
     // handleDeleteMyItem, handleUpdateItems,
     const [items, setItems] = useState([])
 
@@ -46,8 +47,6 @@ function ItemsList({ user, cartItem, change, setChange}){
                 user={user}
                 change={change} 
                 setChange={setChange}
-                // items={items}
-                // setItems={setItems}
                 // handleDeleteMyItem={handleDeleteMyItem}
                 // handleUpdateItems={handleUpdateItems}
             />
