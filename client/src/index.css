@@ -8,11 +8,11 @@ body {
   margin: 10px;
 }
 
-.MuiIcon-fontSizeInherit{
+.MuiIcon-fontSizeInherit {
   font-size: inherit;
 }
 
-.login-form{
+.login-form {
   align-items: center;
   justify-content: center;
   height: 25em;
@@ -23,11 +23,11 @@ body {
   border-radius: 10px;
 }
 
-.activated-heart :first-child{
-    color: red;
+.activated-heart :first-child {
+  color: red;
 }
 
-.login-btn{
+.login-btn {
   align-items: center;
   /* display: flex; */
   text-align: center;
@@ -35,7 +35,7 @@ body {
   margin-top: 40px;
 }
 
-.login-header{
+.login-header {
   font-family: "Rubik black";
   align-items: center;
   text-align: center;
@@ -43,7 +43,7 @@ body {
   justify-content: center;
 }
 
-.LoginPage{
+.LoginPage {
   /* background-image: url("../public/cube-login.png"); */
   background-repeat: repeat-x;
   background-size: contain;
@@ -53,8 +53,8 @@ body {
   padding-top: 50px;
 }
 
-.footer{
-  position:relative;
+.footer {
+  position: relative;
   bottom: 0;
   width: 100%;
   height: 2.5rem;
@@ -70,7 +70,7 @@ code {
     transform: spin right (0deg);
   }
 
-100% {
+  100% {
     transform: rotate(359deg);
   }
 }
@@ -81,28 +81,14 @@ code {
   animation-delay: 2s;
 }
 
-.card-title{
+.card-title {
   font-size: 24px;
   font-weight: bold;
   margin-left: 7px;
 }
 
-.card-description{
+.card-description {
   margin-left: 7px;
-}
-
-.cardButtonDelete{
-  padding: 10px;
-  background-color: red;
-  align-items: center;
-  border-radius: 15px;
-  text-align: center;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  color: white;
-  border: 1px solid white;
-  margin-bottom: 10px;
 }
 
 .cardButtonAddCart {
@@ -119,9 +105,24 @@ code {
   margin-bottom: 10px;
 }
 
-.cardButtonAdded{
+.cardButtonDelete{
     padding: 10px;
-      background-color: light gray;
+    background-color: red;
+    align-items: center;
+    border-radius: 15px;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    color: white;
+    border: 1px solid white;
+    margin-bottom: 10px;
+}
+
+.cardButtonInCart{
+      padding: 10px;
+      background-color: lightgray;
+      pointer-events: none;
       align-items: center;
       border-radius: 15px;
       text-align: center;
@@ -139,12 +140,13 @@ code {
   animation-iteration-count: 2;
 }
 
-.homepage-image-middle{
-    animation-name: rotate;
-    animation-direction: reverse;
-    animation-duration: 2s;
-    animation-iteration-count: 2;
+.homepage-image-middle {
+  animation-name: rotate;
+  animation-direction: reverse;
+  animation-duration: 2s;
+  animation-iteration-count: 2;
 }
+
 /* .login-image{
   animation: rotate 3s;
   padding: 40px;
@@ -152,14 +154,14 @@ code {
   top: 10; 
 } */
 
-.navbar-css{
+.navbar-css {
   width: 100%;
   list-style-type: none;
   display: flex;
   align-items: center;
 }
 
-.navbarContainer{
+.navbarContainer {
   display: flex;
   height: 7em;
   background-color: white;
@@ -170,7 +172,7 @@ code {
 }
 
 body {
-  background: #f4f4f4;
+  background: white;
 }
 
 .banner {
@@ -180,7 +182,7 @@ body {
 }
 
 
-.nav-button { 
+.nav-button {
   margin-left: 20px;
   height: 70%;
   padding: 6px 10px;
@@ -189,23 +191,24 @@ body {
   text-decoration-line: none;
 }
 
-a{
+a {
   text-decoration: none;
   color: black;
 }
 
-input.form-control{
+input.form-control {
   height: 25px;
   width: 200px;
-  font-family: 'Rubik', sans-serif;  
+  font-family: 'Rubik', sans-serif;
 }
 
-label.form-control{
-  font-family: 'Rubik', sans-serif;  font-family: 'Roboto Condensed', sans-serif;
+label.form-control {
+  font-family: 'Rubik', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 
-.navbutton{
+.navbutton {
   padding: 2px 5px;
   border: 2px solid black;
   margin: 4px;
@@ -219,11 +222,11 @@ label.form-control{
   padding: 5px;
 }
 
-.nav-link{
+.nav-link {
   display: inline-block;
 }
 
-#userNav{
+#userNav {
   justify-content: end;
   width: 60em;
   display: flex;
@@ -236,31 +239,31 @@ label.form-control{
       font-size: 80px;
 } */
 
-#userNavCartContainer{
+#userNavCartContainer {
   font-size: 40px;
 }
 
-.heading-container{
+.heading-container {
   display: flex;
 }
 
-.profile-heading{
+.profile-heading {
   padding-left: 30px;
 }
 
-.profileContainer{
+.profileContainer {
   margin: 70px;
 }
 
-#userNavCartContainer :first-child{
+#userNavCartContainer :first-child {
   font-size: inherit;
 }
 
-.nav-item{
-padding: 20px;
+.nav-item {
+  padding: 20px;
 }
 
-.one-item-card{
+.one-item-card {
   background-color: white;
   width: 20em;
   height: 40em;
@@ -270,11 +273,11 @@ padding: 20px;
   margin-bottom: 2em;
 }
 
-.pointer-events{
+.pointer-events {
   pointer-events: none;
 }
 
-.item-middle-header{
+.item-middle-header {
   align-items: center;
   text-align: center;
   justify-content: center;
@@ -285,8 +288,8 @@ padding: 20px;
   align-items: center;
 }
 
-.item-card-image{
-  width:18em;
+.item-card-image {
+  width: 18em;
   height: 100%;
   max-height: 25em;
   align-items: center;
@@ -299,13 +302,13 @@ padding: 20px;
   margin-right: auto; */
 }
 
-.item-price{
+.item-price {
   display: flex;
   padding-left: 1em;
   align-items: center;
 }
 
-.details-btn{
+.details-btn {
   padding: 5px;
   margin-bottom: 20px;
   align-items: center;
@@ -313,7 +316,7 @@ padding: 20px;
   justify-content: center;
 }
 
-.item-header-icons{
+.item-header-icons {
   display: flex;
   color: rgb(255, 255, 255);
 }
@@ -324,56 +327,56 @@ padding: 20px;
   padding-left: .3em;
 }
 
-.item-card-bottom{
+.item-card-bottom {
   /* margin-top: 10px; */
   padding-top: 10px;
   line-height: .3;
 }
 
-.item-card-flex-price-buybutton{
+.item-card-flex-price-buybutton {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.item-card-buy-button{
+.item-card-buy-button {
   padding-left: 5em;
 }
 
-.items-grid{
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+.items-grid {
+  grid-template-columns: 1fr 1fr 1fr;
   display: grid;
   grid-template-rows: auto;
   grid-gap: 2em 1em;
 }
 
-#profileIcon{
+#profileIcon {
   font-size: 80px;
   font-weight: light;
 }
 
-#profileIcon :first-child{
+#profileIcon :first-child {
   font-size: inherit;
 }
 
-.grid-container{
+.grid-container {
   padding: 25px;
 }
 
-.search{
+.search {
   padding: 10px;
   border: 1px solid black;
   text-align: center;
 }
 
-.buy-btn{
+.buy-btn {
   padding: 6px;
   color: rgb(0, 0, 0);
   background-color: rgb(255, 255, 255);
   box-shadow: 1px rgb(0, 0, 0);
 }
 
-.item-card-header{
+.item-card-header {
   border-bottom: 1px solid black;
   padding: 10px;
   background-color: rgb(0, 0, 0);
@@ -483,21 +486,21 @@ div.order-button>button:disabled {
   right: 0;
 }
 
-.hide{
+.hide {
   display: hidden;
 }
 
-#item-form{
+#item-form {
   margin-top: 30px;
   float: left;
 }
 
-#item-preview{
-    margin-top: 30px;
-    float: right;
+#item-preview {
+  margin-top: 30px;
+  float: right;
 }
 
-.item-preview-container{
+.item-preview-container {
   border: 1px solid black;
   padding: 20px;
 }
@@ -562,12 +565,12 @@ div.order-button>button:disabled {
   }
 }
 
-.card-container{
+.card-container {
   border: 1px solid black;
   border-radius: 15px;
 }
 
-img{
+img {
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
 }

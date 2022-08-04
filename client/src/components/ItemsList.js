@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ItemCardNew from './ItemCardNew';
 // import SearchBar from './SearchBar';
-import DetailModal from './DetailModal';
 
 function ItemsList({ user, cartItem, change, setChange }){
     // handleDeleteMyItem, handleUpdateItems,
@@ -47,6 +46,8 @@ function ItemsList({ user, cartItem, change, setChange }){
                 user={user}
                 change={change} 
                 setChange={setChange}
+                setItems={setItems}
+                items={items}
                 // handleDeleteMyItem={handleDeleteMyItem}
                 // handleUpdateItems={handleUpdateItems}
             />

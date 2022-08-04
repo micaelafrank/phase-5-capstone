@@ -9,24 +9,26 @@ import CheckoutForm from "./CheckoutForm";
 function ShoppingCart({ deleteItem, items, total }){
     const [cartItems, setCartItems] = useState([]);
     const [addedCartItems, setAddedCartItems] = useState(0); 
+    const [showCheckout, setShowCheckout] = useState(false)
 
-
-function deleteItem(id) {
-    const updatedCart = uniqueCartItems.filter((cartItem) => cartItem.id !== id);
-    setCartItems(updatedCart);
-}
-
-const uniqueIds = [];
-
-const uniqueCartItems = cartItems.filter(cartItem => {
-    const isDuplicate = uniqueIds.includes(cartItem.id);
-
-    if (!isDuplicate) {
-        uniqueIds.push(cartItem.id);
-
-        return true;
+    function togglePayment() {
+        setShowCheckout(showCheckout => (!showCheckout));
     }
 
+    function deleteItem(id) {
+        const updatedCart = uniqueCartItems.filter((cartItem) => cartItem.id !== id);
+        setCartItems(updatedCart);
+    }
+
+    const uniqueIds = [];
+
+    const uniqueCartItems = cartItems.filter(cartItem => {
+        const isDuplicate = uniqueIds.includes(cartItem.id);
+
+        if (!isDuplicate) {
+            uniqueIds.push(cartItem.id);
+        return true;
+    }
     return false;
 }
 );
@@ -76,7 +78,8 @@ const uniqueCartItems = cartItems.filter(cartItem => {
                     <li style={{ position: "absolute", right: "340px" }}>Total: {addedCartItems}</li>
                 </ul>
             </div>
-            <StripeContainer total={addedCartItems} />
+            <button onClick={togglePayment}>Check Out</button>
+            {showCheckout ? <StripeContainer total={addedCartItems} /> : null}
         </div>
 )};
 

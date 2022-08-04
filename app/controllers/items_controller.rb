@@ -34,7 +34,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :item_invalid
     def destroy 
         item = find_item
         item.destroy 
-        head :no_content 
+        render json: item
     end
 
     private 

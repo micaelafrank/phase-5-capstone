@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { useNavigate } from 'react-router-dom';
-import ItemCard from './ItemCard'
+import ItemCard from './ignore/ItemCard'
 
 function AddItemForm({ user, addNewItem }) {
     const [itemname, setItemName] = useState("")
@@ -184,9 +184,9 @@ function AddItemForm({ user, addNewItem }) {
                         onChange={handleImages} 
                         />
                     </Form.Group>  
+                    <button style={{ marginTop: "20px", padding: "10px 25px" }} type="submit">Submit</button>
                 </form>
                 </div>
-                <button style={{ marginTop: "20px", padding: "10px 25px" }} type="submit">Submit</button>
             </>
     )
 }

@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     # delete "/removeitem", to: "user_cart_items#destroy"
     post "/create_cart" , to: "user_carts#create"
     post "/addtocart", to: "user_cart_items#create"
-    delete `user_cart_items/emptycart`, to: "user_cart_items#emptycart"
+    delete "/emptycart", to: "user_cart_items#emptycart"
     post '/create-payment-intent', to: 'checkout#create_payment_intent'
 
 end

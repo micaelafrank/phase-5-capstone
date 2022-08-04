@@ -31,8 +31,16 @@ rescue_from ActiveRecord::RecordInvalid, with: :item_invalid
     end
 
     def emptycart
-        myItems = UserCartItem.all 
-        myItems.destroy_all 
+        cart = UserCart.find_by(user_id: @current_user.id)
+        cart_items = cart.user_cart_items
+        cart_items.each do |item|
+            item_one = item.item
+            item_one.destroy
+        end
+        cart_items.destroy_all
+        render json: cart
+        # myItems = UserCartItem.all 
+        # myItems.destroy_all 
         # for item in myItems do 
         #     item = UserCartItem.find_by(item_id: params[:id])
         #     item.destroy
