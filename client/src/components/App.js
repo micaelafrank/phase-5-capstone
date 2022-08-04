@@ -26,6 +26,21 @@ function App() {
     setItems(...items, newItem)
   }
 
+  // function from payment landing page: updateItems. Deleting the purchased item from the 
+  // items list. And updating the id of the buyer to be the new user_id (item belongs to user).
+  // ***************************
+  // function updateItems(boughtItem){
+  //     const updatedItemsList = items.map((item) => item.id === boughtItem.id ? boughtItem : item);
+  //     boughtItem.user_id = user.id;
+  //     setItems(updatedItemsList);
+  // }
+  // ***************************
+
+  function deleteBoughtItem(id){
+    const updatedItemsList = items.filter((item) => item.id !== id);
+    setItems(updatedItemsList);
+  }
+
   useEffect(() => {
     fetch("/items")
       .then((r) => r.json())
@@ -56,7 +71,8 @@ function App() {
             <Route path="/sell" element={<AddItemForm addNewItem={addNewItem} user={user} />} />
             <Route path="/buy" element={<ItemsList change={change} setChange={setChange} user={user} />} />
             <Route path="/checkout" element={<StripeContainer total={1000} />} />
-            <Route path="/orderconfirmation" element={<PurchaseLandingPage items={items} user={user} />} />
+            <Route path="/orderconfirmation" element={<PurchaseLandingPage items={items} deleteBoughtItem={deleteBoughtItem} user={user} />} />
+          {/* this belongs in the PurchaseLandingPage route:^^^ updateItems={updateItems} */}
             <Route path="/mycart" element={<ShoppingCart total={items} setChange={setChange} change={change} user={user} items={items} />} />
           </Route>
         </Routes>

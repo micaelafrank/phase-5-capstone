@@ -23,15 +23,6 @@ function EditDelete(){
         // *************************** 
     }
 
-    function cancelDelete(){
-        //do nothing => exit out of modal 
-    }
-
-    function editListing(){
-        //open Modal with item details or bring them back to the form and let all input values be edited. 
-
-    }
-
     // in return statement for editing: 
     <button onClick={() => setShowEdit(showEdit => !showEdit)}>Edit Item</button>
     { showEdit && <AddItemForm item={item} onUpdateRequest={handleUpdateItem} edit={true} /> }

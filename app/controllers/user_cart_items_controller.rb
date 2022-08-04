@@ -32,11 +32,11 @@ rescue_from ActiveRecord::RecordInvalid, with: :item_invalid
 
     def emptycart
         myItems = UserCartItem.all 
-        myItems.destroy_all 
-        # for item in myItems do 
-        #     item = UserCartItem.find_by(item_id: params[:id])
-        #     item.destroy
-        # end
+        # myItems.destroy_all 
+        for item in myItems do 
+            item = UserCartItem.find_by(item_id: params[:id])
+            item.destroy
+        end
         head :no_content
     end 
 

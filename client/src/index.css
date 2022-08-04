@@ -142,7 +142,7 @@ code {
 }
 
 body {
-  background: #f4f4f4;
+  background: white;
 }
 
 .banner {
@@ -313,7 +313,7 @@ padding: 20px;
 }
 
 .items-grid{
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   display: grid;
   grid-template-rows: auto;
   grid-gap: 2em 1em;
@@ -543,3 +543,4 @@ img{
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
 }
+

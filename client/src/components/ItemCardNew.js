@@ -1,25 +1,54 @@
 import React, {useState} from 'react';
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
-import DetailModal from './DetailModal';
-import Carousel from 'react-bootstrap/Carousel';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import {Button, Card, Alert, Modal} from 'react-bootstrap';
 
-
-function ItemCardNew({ item, sold_by, setChange, handleCartClick, change, user, itemname, isForSale, id, color, price, description, images_url, material, condition, size }) {
+function ItemCardNew({ item, sold_by, setChange, items, setItems, handleCartClick, change, user, itemname, isForSale, id, color, price, description, images_url, material, condition, size }) {
     const [inCart, setInCart] = useState(false)
     const [details, setDetails] = useState(false)
+    const [wasClicked, setWasClicked] = useState(false)
+    const [open, setOpen] = useState(false);
+
+    console.log(open)
+    const handleModalBtn = (e) => {
+        console.log(e.target)
+        setOpen(true)
+        console.log(open)
+    }
 
     function handleCartClick() {
         setInCart(inCart => (!inCart))
+        setWasClicked(wasClicked => (!wasClicked));
+        <Alert key={'success'} variant={'success'}>Added to cart</Alert>
     }
 
-    // function handleUpdateItem(){
+    function handleDelete(id) {
+        fetch(`items`, {
+            method: "DELETE",
+        })
+        const updatedItemsList = items.filter((item) => item.id !== id);
+        setItems(updatedItemsList);
+    }
 
+    // function removeFromMarketplace(){
+    //     console.log("I am a modal")
+    //     return(
+    //     <Modal>
+    //         <Modal.Header>
+    //             <Modal.Title>Are you sure?</Modal.Title>
+    //         </Modal.Header>
+    //         <Modal.Body>If you delete this item, it will no longer be for sale and will be removed from buyers' carts.</Modal.Body>
+    //         <Modal.Footer>
+    //             <Button variant="secondary" onClick={() => setShow(false)}>
+    //                 Cancel
+    //             </Button>
+    //             <Button variant="primary" onClick={handleDelete}>
+    //                 Delete Item
+    //             </Button>
+    //         </Modal.Footer>
+    //     </Modal>
+    //     )
     // }
+
 
     function renderUserCartItem() {
         console.log(user)
@@ -44,40 +73,43 @@ function ItemCardNew({ item, sold_by, setChange, handleCartClick, change, user, 
 
     return(
         <React.Fragment>
-            {/* <Card className="card-container" style={{ width: '18rem', maxHeight:"50rem" }}>
-                <Card.Img variant="top" src={item.images_url} />
+            <Card className="card-container" style={{ width: '25rem', maxHeight:"50rem" }}>
+                <div style={{height:"420px"}}>
+                    <Card.Img variant="top" src={item.images_url}/>
+                </div>
                 <Card.Body>
                     <Card.Title className="card-title">{item.itemname}</Card.Title>
                     <Card.Text className="card-description">{description}</Card.Text>
-                    <Card.Text className="card-description">Seller: {sold_by}</Card.Text>
+                    <Card.Text className="card-description">Seller: <span style={{ color: "blue" }}>{sold_by}</span></Card.Text>
                     <div className="item-card-flex-price-buybutton">
                         <div className="item-price">
                             <SellOutlinedIcon style={{ paddingRight: "4px" }} />
                             <p style={{ paddingRight: "14px" }}>${price}</p>
                         </div>
                     </div>
+                    {user.id === item.user_id ? 
                     <Button className="card-button"
+                    onClick={()=> setOpen(true)}>Delete</Button> : 
+                    (<Button className="card-button"
                     onClick={renderUserCartItem}
                     variant="primary">
                         Add To Cart
-                    </Button>
+                    </Button>)}
+                    {wasClicked ? <Alert key={'success'} variant={'success'}>Added to cart</Alert> : null}
                 </Card.Body>
-            </Card> */}
-
-            <div className="row">
-                <div className="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div className="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg" alt="" class="img-fluid card-img-top" />
-                        <div className="p-4">
-                            <h5> <a href="#" className="text-dark">Red paint cup</a></h5>
-                            <p className="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                            <div className="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                                <p className="small mb-0"><i className="fa fa-picture-o mr-2"></i><span className="font-weight-bold">JPG</span></p>
-                                <div className="badge badge-danger px-3 rounded-pill font-weight-normal">New</div>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
+            </Card>
+            <>
+        {open ? 
+            <Modal
+            open={open}
+            onClose={() => setOpen(false)}
+            >
+                <h1>Are you sure?</h1>
+                <p>If you delete this item, it will no longer be for sale and will be removed from buyers' carts.</p>
+                {/* <button variant="secondary" onClick={(e) => handleModalBtn(e)}>Cancel</button> */}
+                <button variant="primary" onClick={handleDelete}>Delete Item</button>
+            </Modal> : null}
+                </>
         </React.Fragment>
 )}
 

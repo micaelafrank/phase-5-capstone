@@ -40,7 +40,7 @@ function SignUp({ user, setUser }) {
                     }).then((res) => res.json())
                         .then(setCart(userCart))
                 })
-                .then(navigate("/"));
+                .then(navigate("/profile"));
             } else {
                 r.json().then((err) => setErrors(err.errors));
             }

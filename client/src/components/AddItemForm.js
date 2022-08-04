@@ -72,7 +72,7 @@ function AddItemForm({ user, addNewItem }) {
                         <Form.Control type="float"
                             id="price"
                             value={price}
-                            onChange={(e) => setPrice(e.target.value).toFixed(2)}
+                            onChange={(e) => setPrice(e.target.value)}
                         />
                     </Form.Group>
                     <Form.Label style={{ paddingRight: "10px"}} htmlFor="description">Description:</Form.Label>
@@ -183,10 +183,10 @@ function AddItemForm({ user, addNewItem }) {
                         accept="image/*"
                         onChange={handleImages} 
                         />
-                    </Form.Group>  
+                    </Form.Group> 
+                    <button style={{ marginTop: "20px", padding: "10px 25px" }} type="submit">Submit</button> 
                 </form>
                 </div>
-                <button style={{ marginTop: "20px", padding: "10px 25px" }} type="submit">Submit</button>
             </>
     )
 }
