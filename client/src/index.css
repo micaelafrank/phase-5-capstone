@@ -13,10 +13,11 @@ body {
 }
 
 .login-form {
+  position: relative;
   align-items: center;
   justify-content: center;
-  height: 25em;
-  width: 40em;
+  height: 20em;
+  width: 35em;
   margin: auto;
   background-color: white;
   border: 1px solid black;
@@ -27,12 +28,21 @@ body {
   color: red;
 }
 
-.login-btn {
+/* .login-btn {
   align-items: center;
-  /* display: flex; */
+ 
   text-align: center;
   justify-content: center;
   margin-top: 40px;
+  margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+} */
+
+.login-btn-container{
+  width:15w%;
+  margin:auto ;
 }
 
 .login-header {

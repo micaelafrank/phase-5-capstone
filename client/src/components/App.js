@@ -44,14 +44,10 @@ function App() {
   return (
     <div>
         <Routes>
-            <Route element={<WithoutNav />}>
             <Route path="/login" element={<LogIn user={user} setUser={setUser} />} />
             <Route path="/signup" element={<SignUp user={user} setUser={setUser} />} />
-            {/* <Route path="/home" element={<Home />} /> */}
-            {/* //SHOW NAV BAR IN HOME WHEN YOU'RE SIGNED IN. OTHERWISE NOT */}
-          </Route>
-            <Route element={<WithNav user={user} setUser={setUser} />}>
-            <Route exact={true} path="/" element={<Home />} />
+          <Route element={<WithNav user={user} setUser={setUser} />}>
+            <Route path="/" element={<Home user={user} />} />
             <Route path="/profile" element={<Profile user={user} />} />
             <Route path="/sell" element={<AddItemForm addNewItem={addNewItem} user={user} />} />
             <Route path="/buy" element={<ItemsList change={change} setChange={setChange} user={user} />} />

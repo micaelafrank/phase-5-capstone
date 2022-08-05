@@ -57,6 +57,7 @@ function ItemsList({ user, cartItem, change, setChange }){
     return(
         <div>
             {/* <SearchBar/> */}
+            <h1 style={{ textAlign:"center", alignItems: "center" }}>Available Items:</h1>
             <div className="grid-container">
                 <div className="items-grid">{itemsList}</div>
             </div>

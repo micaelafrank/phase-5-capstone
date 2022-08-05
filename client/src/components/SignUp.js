@@ -30,17 +30,8 @@ function SignUp({ user, setUser }) {
             if (r.ok) {
                 r.json().then((user) => {
                     setUser(user)
-                    console.log(user)
-                    fetch("/create_cart", {
-                        method: 'POST',
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({ user_id: user.id }),
-                    }).then((res) => res.json())
-                        .then(setCart(userCart))
+                    navigate("/")
                 })
-                .then(navigate("/"));
             } else {
                 r.json().then((err) => setErrors(err.errors));
             }
@@ -61,7 +52,7 @@ function SignUp({ user, setUser }) {
     return(
         <>
             <header style={{ float: "right", height: "10em" }}>
-                <button style={{ padding: "3px 10px", marginRight: "10px" }} onClick={() => navigate("/home")}>Home</button>
+                <button style={{ padding: "3px 10px", marginRight: "10px" }} onClick={() => navigate("/")}>Home</button>
                 <button style={{ padding: "3px 10px" }} onClick={() => navigate("/login")}>Login</button>
             </header>
             <form onSubmit={handleSignUp}>

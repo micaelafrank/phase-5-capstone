@@ -14,10 +14,16 @@ function Profile({ user }) {
                     {/* <AccountCircleOutlinedIcon /> */}
                 </div>
                 <div className="profile-heading">
-                    <h2>@{user.username}</h2>
+                    <h2>Welcome, @{user.username}.</h2>
+                    <p>Start buying and selling!</p>
+                </div>
                 </div>
             </div>
-            <h3>Welcome!</h3>
+    )
+}
+
+{/* </div>
+            <h3>Welcome, @{user.username}!</h3>
             <div>
                 <h2>Items You're Selling Now:</h2>
                 <ul>
@@ -33,9 +39,7 @@ function Profile({ user }) {
                     <li></li>
                     <li></li>
                 </ul>
-            </div>
-        </div>
-    )
-}
+            </div> */}
+{/* </div> */ }
 
 export default Profile;

@@ -30,24 +30,28 @@ function LogIn({ setUser, user }){
     }
 
     return(
-        <div className="LoginPage">
-            <div className="login-background">   
+        <div style={{alignItems: "center"}} className="LoginPage">
+            <div style={{ alignItems: "center", justifyContent: "center" }} className="login-background">   
                 <form className="login-form" onSubmit={handleLogin}>
                 <h1 className="login-header">Log In</h1>
-                    <label style={{ color: "black", alignItems: "center", textAlign: "center", margin: "0" }}>Username: </label>
-                    <input type="text"
-                    style={{ alignItems: "center", padding:"10px", width:"300px", margin:"auto" }}
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    /><br></br>
-
-                    <label style={{color:"black", paddingTop:"100px"}}>Password: </label>
-                    <input type="password"
-                    style={{ padding: "10px", marginTop: "20px", width: "300px", marginLeft:"0", marginRight:"0"}}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <button className="login100-form-btn" style={{alignItems:"center", textAlign:"center", justifyContent:"center" }} type="submit">Login</button>
+                    <div>
+                        <label style={{ color: "black", alignItems: "center", textAlign: "center", padding:"10px"}}>Username: </label>
+                        <input type="text"
+                        style={{ alignItems: "center", padding: "10px", width: "300px", margin: "auto" }}
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label style={{ color: "black", padding: "10px", paddingTop:"100px"}}>Password: </label>
+                        <input type="password"
+                        style={{ padding: "10px", marginTop: "20px", width: "300px", marginLeft:"0", marginRight:"0"}}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <div className="login-btn-container">
+                    <button className="login100-form-btn" style={{alignItems:"center", backgroundColor:"lightpink", borderRadius:"5px", position:"absolute", margin:"auto", padding:"10px", marginTop:"15px", textAlign:"center", justifyContent:"center" }} type="submit">Login</button>
+                    </div>
                 </form>
             </div>
 

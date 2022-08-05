@@ -1,15 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import Button from "@material-ui/core/Button";
-import AddIcon from "@material-ui/icons/Add";
-import RemoveIcon from "@material-ui/icons/Remove";
-import AddToCart from "./ShoppingCart";
-import { red } from "@mui/material/colors";
+
 
 function Navigation({ user, setUser, itemCount }) {
     // const [itemCount, setItemCount] = useState(0);
@@ -47,21 +41,25 @@ function Navigation({ user, setUser, itemCount }) {
                 <button onClick={handleLogout}>Logout</button>
                 ) : (  */}
                 <div className="centered">
-                    <button className="nav-button" style={{ color: "black", border: "2px solid black" }}><Link to="/profile">Profile</Link></button>
-                    <button className="nav-button" style={{ color: "black", border: "2px solid black" }}><Link to="/buy">Buy</Link></button>
-                    <button className="nav-button" style={{ color: "black", border: "2px solid black" }}><Link to="/sell">Sell</Link></button>
-                    <button className="nav-button" style={{ color: "black", border: "2px solid black" }} onClick={handleLogout}>Logout</button>
+                    {user.username ?  
+                    <>
+                            <button className="nav-button" style={{ color: "black", border: "2px solid black" }}><Link to="/profile">Profile</Link></button>
+                            <button className="nav-button" style={{ color: "black", border: "2px solid black" }}><Link to="/buy">Buy</Link></button>
+                            <button className="nav-button" style={{ color: "black", border: "2px solid black" }}><Link to="/sell">Sell</Link></button> 
+                    </>
+                    : null}
+                    {user.username ? <button className="nav-button" style={{ color: "black", border: "2px solid black" }} onClick={handleLogout}>Logout</button> : <button className="nav-button" style={{ color: "black", border: "2px solid black" }} onClick={()=> navigate('/login') }>Log In</button>}
                 {/* )} */}
                 </div>
             </div>
             <div id="userNav" style={{ paddingRight: "20px" }}>
-                <p style={{paddingRight:"20px"}}>Signed in as: <span style={{ fontWeight: "bold" }}>{user.username ?user.username : null}</span></p>
+                <p style={{ paddingRight: "20px" }}>{user.username ? "Signed in as: " : "Log in" }<span style={{ fontWeight: "bold" }}>{user.username ? user.username : null }</span></p>
                 <div style={{ display: "block", padding: 30 }}>
-                    <div onClick={openShoppingCart}>
+                    {user.username ? <div onClick={openShoppingCart}>
                         <Badge color="secondary" badgeContent={itemCount} alignItems="center">
                             View Cart< ShoppingCartIcon />{" "}
                         </Badge>
-                    </div>
+                    </div> : null}
                 </div>
                     {/* <span id="userNavCartContainer">
                     <ShoppingCartOutlinedIcon />

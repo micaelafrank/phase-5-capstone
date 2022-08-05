@@ -18,7 +18,7 @@ gem "bcrypt"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
-require 'faker'
+# require 'faker'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

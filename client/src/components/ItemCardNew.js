@@ -55,7 +55,7 @@ function ItemCardNew({ item, sold_by, setChange, items, setItems, handleCartClic
         <>
             <Card className="card-container" style={{ width: '25rem', maxHeight: "50rem" }}>
                 <div style={{ height: "420px" }}>
-                    <Card.Img variant="top" src={item.images_url} style={{ height: "auto", maxHeight: "400px" }} />
+                    <Card.Img variant="top" src={item.images_url} style={{height: "auto", maxHeight: "420px", overflow:"hidden" }} />
                 </div>
                 <Card.Body>
                     <Card.Title className="card-title">{item.itemname}</Card.Title>
